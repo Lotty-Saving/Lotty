@@ -31,8 +31,6 @@ export default function HomePage() {
     }
   };
 
-  console.log(address, " here");
-
   const renderContent = () => {
     switch (activeTab) {
       case "lucky-saving":
