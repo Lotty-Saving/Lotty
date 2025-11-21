@@ -1,21 +1,13 @@
 "use client";
 
 import { Card } from "~/components/ui/card";
-import { Badge } from "~/components/ui/badge";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "~/components/ui/tooltip";
-import {
-  Users,
-  Coins,
-  Trophy,
-  TrendingUp,
-  Flame,
-  Snowflake,
-} from "lucide-react";
+import { Users, Coins, Trophy, TrendingUp } from "lucide-react";
 
 interface ProfileSectionProps {
   address: string | null;
@@ -47,21 +39,23 @@ export function ProfileSection({
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-gray-900">Tu Perfil</h2>
-        <p className="mt-1 text-sm text-gray-600">
-          Estadísticas y progreso de tus ahorros
+        <h2 className="cuphead-text text-2xl font-bold text-[#2C1810]">
+          Your Profile
+        </h2>
+        <p className="mt-1 text-sm font-bold text-[#5D4E37]">
+          Statistics and progress of your savings
         </p>
       </div>
 
       {!address && (
-        <Card className="border-blue-200 bg-linear-to-br from-blue-50 to-blue-100 p-8">
+        <Card className="border-4 border-[#2C1810] bg-[#FFD93D] p-8 shadow-2xl">
           <div className="flex flex-col items-center justify-center text-center">
-            <Users className="mb-4 h-16 w-16 text-blue-600" />
-            <h3 className="mb-2 text-xl font-semibold text-gray-900">
-              Conecta tu Wallet
+            <Users className="mb-4 h-16 w-16 text-[#2C1810]" />
+            <h3 className="cuphead-text mb-2 text-xl font-bold text-[#2C1810]">
+              Connect Your Wallet
             </h3>
-            <p className="text-sm text-gray-600">
-              Conecta tu wallet para ver tus estadísticas
+            <p className="text-sm font-bold text-[#5D4E37]">
+              Connect your wallet to see your statistics
             </p>
           </div>
         </Card>
@@ -71,203 +65,104 @@ export function ProfileSection({
         <>
           {/* User Overview */}
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-            <Card className="border-purple-200 bg-linear-to-br from-purple-50 to-purple-100 p-6">
+            <Card className="border-4 border-[#2C1810] bg-[#FFD93D] p-6 shadow-lg transition-all hover:scale-105 hover:shadow-[4px_4px_0px_0px_rgba(44,24,16,1)]">
               <div className="flex items-start justify-between">
                 <div>
-                  <p className="text-sm font-medium text-purple-700">
-                    Balance Total
+                  <p className="text-sm font-bold text-[#5D4E37] uppercase">
+                    Total Balance
                   </p>
-                  <p className="mt-2 text-3xl font-bold text-purple-900">
+                  <p className="cuphead-text mt-2 text-3xl font-bold text-[#2C1810]">
                     ${poolData.userBalance}
                   </p>
                 </div>
-                <Coins className="h-8 w-8 text-purple-600" />
+                <Coins className="h-8 w-8 text-[#2C1810]" />
               </div>
             </Card>
 
-            <Card className="border-blue-200 bg-linear-to-br from-blue-50 to-blue-100 p-6">
+            <Card className="border-4 border-[#2C1810] bg-[#F5E6D3] p-6 shadow-lg transition-all hover:scale-105 hover:shadow-[4px_4px_0px_0px_rgba(44,24,16,1)]">
               <div className="flex items-start justify-between">
                 <div>
-                  <p className="text-sm font-medium text-blue-700">
-                    Tickets Activos
+                  <p className="text-sm font-bold text-[#5D4E37] uppercase">
+                    Active Tickets
                   </p>
-                  <p className="mt-2 text-3xl font-bold text-blue-900">
+                  <p className="cuphead-text mt-2 text-3xl font-bold text-[#D62828]">
                     {poolData.userTickets}
                   </p>
                 </div>
-                <Trophy className="h-8 w-8 text-blue-600" />
+                <Trophy className="h-8 w-8 text-[#FFD93D]" />
               </div>
             </Card>
 
-            <Card className="border-orange-200 bg-linear-to-br from-orange-50 to-orange-100 p-6">
+            <Card className="border-4 border-[#2C1810] bg-[#FFF8DC] p-6 shadow-lg transition-all hover:scale-105 hover:shadow-[4px_4px_0px_0px_rgba(44,24,16,1)]">
               <div className="flex items-start justify-between">
                 <div>
-                  <p className="text-sm font-medium text-orange-700">
-                    APY Actual
+                  <p className="text-sm font-bold text-[#5D4E37] uppercase">
+                    Current APY
                   </p>
-                  <p className="mt-2 text-3xl font-bold text-orange-900">
+                  <p className="cuphead-text mt-2 text-3xl font-bold text-[#D62828]">
                     {userStats.currentAPY}%
                   </p>
                 </div>
-                <TrendingUp className="h-8 w-8 text-orange-600" />
+                <TrendingUp className="h-8 w-8 text-[#2C1810]" />
               </div>
             </Card>
           </div>
 
-          {/* Saving Streak */}
-          <Card className="p-6">
-            <h3 className="mb-4 text-lg font-semibold text-gray-900">
-              Racha de Ahorro
-            </h3>
-            <div className="mb-6 text-center">
-              <div className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-6 py-3">
-                <Flame className="h-6 w-6 text-orange-600" />
-                <span className="text-3xl font-bold text-orange-900">
-                  {userStats.streak}
-                </span>
-                <span className="text-sm font-medium text-orange-700">
-                  días
-                </span>
-              </div>
-            </div>
-
-            {/* Weekly Activity */}
-            <div className="mb-4">
-              <p className="mb-3 text-sm font-medium text-gray-700">
-                Actividad Semanal
-              </p>
-              <div className="grid grid-cols-7 gap-2">
-                {["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"].map(
-                  (day, index) => (
-                    <div key={day} className="text-center">
-                      <div
-                        className={`mb-2 flex h-12 w-full items-center justify-center rounded-lg ${
-                          userStats.weekActivity[index]
-                            ? "bg-orange-100"
-                            : "bg-gray-100"
-                        }`}
-                      >
-                        {userStats.weekActivity[index] ? (
-                          <Flame className="h-6 w-6 text-orange-600" />
-                        ) : (
-                          <Snowflake className="h-6 w-6 text-gray-400" />
-                        )}
-                      </div>
-                      <p className="text-xs text-gray-600">{day}</p>
-                    </div>
-                  ),
-                )}
-              </div>
-            </div>
-
-            <p className="text-center text-sm text-gray-600">
-              Compra tickets 3 de 7 días de la semana para mantener tu racha
-            </p>
-          </Card>
-
-          {/* Streak Rewards */}
-          <Card className="p-6">
-            <h3 className="mb-4 text-lg font-semibold text-gray-900">
-              Recompensas por Racha
-            </h3>
-            <div className="space-y-3">
-              {[
-                { days: 0, apy: 8, active: true },
-                { days: 7, apy: 9, active: true },
-                { days: 30, apy: 10, active: true },
-                { days: 60, apy: 11, active: true },
-                { days: 100, apy: 12, active: false },
-                { days: 365, apy: 13, active: false },
-              ].map((reward) => (
-                <div
-                  key={reward.days}
-                  className={`flex items-center justify-between rounded-lg p-4 ${
-                    reward.active
-                      ? "border border-orange-200 bg-orange-50"
-                      : "bg-gray-50"
-                  }`}
-                >
-                  <div className="flex items-center gap-3">
-                    {reward.active ? (
-                      <Flame className="h-5 w-5 text-orange-600" />
-                    ) : (
-                      <Snowflake className="h-5 w-5 text-gray-400" />
-                    )}
-                    <span
-                      className={`font-medium ${
-                        reward.active ? "text-orange-900" : "text-gray-600"
-                      }`}
-                    >
-                      {reward.days} días
-                    </span>
-                  </div>
-                  <Badge
-                    className={
-                      reward.active
-                        ? "bg-orange-600 text-white"
-                        : "bg-gray-300 text-gray-600"
-                    }
-                  >
-                    {reward.apy}% APY
-                  </Badge>
-                </div>
-              ))}
-            </div>
-          </Card>
-
           {/* Wallet Info */}
-          <Card className="p-6">
-            <h3 className="mb-4 text-lg font-semibold text-gray-900">
-              Información de Wallet
+          <Card className="border-4 border-[#2C1810] bg-[#FFF8DC] p-6 shadow-2xl">
+            <h3 className="cuphead-text mb-4 text-lg font-bold text-[#2C1810]">
+              Wallet Information
             </h3>
             <div className="space-y-3">
-              <div className="flex items-center justify-between border-b border-gray-100 py-2">
-                <span className="text-sm font-medium text-gray-600">
-                  Dirección:
+              <div className="flex items-center justify-between border-b-3 border-[#2C1810] py-2">
+                <span className="text-sm font-bold text-[#5D4E37] uppercase">
+                  Address:
                 </span>
                 <div className="flex items-center gap-2">
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <span className="cursor-pointer rounded bg-gray-50 px-2 py-1 font-mono text-sm text-gray-900 transition-colors hover:bg-gray-100">
+                        <span className="cursor-pointer rounded border-2 border-[#2C1810] bg-[#F5E6D3] px-2 py-1 font-mono text-sm font-bold text-[#2C1810] transition-colors hover:bg-[#FFD93D]">
                           {address.slice(0, 4)}...{address.slice(-4)}
                         </span>
                       </TooltipTrigger>
-                      <TooltipContent>
-                        <p className="font-mono text-xs">{address}</p>
+                      <TooltipContent className="border-3 border-[#2C1810] bg-[#FFF8DC]">
+                        <p className="font-mono text-xs font-bold text-[#2C1810]">
+                          {address}
+                        </p>
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>
                   <button
                     onClick={() => copyToClipboard(address)}
-                    className="rounded p-1 transition-colors hover:bg-gray-100"
-                    aria-label="Copiar dirección"
+                    className="rounded border-2 border-[#2C1810] bg-[#F5E6D3] p-1 transition-all hover:scale-110 hover:bg-[#FFD93D]"
+                    aria-label="Copy address"
                   >
                     {copied ? (
                       <svg
-                        className="h-4 w-4 text-green-600"
+                        className="h-4 w-4 text-[#D62828]"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
+                        strokeWidth={3}
                       >
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          strokeWidth={2}
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
                     ) : (
                       <svg
-                        className="h-4 w-4 text-gray-600"
+                        className="h-4 w-4 text-[#2C1810]"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
+                        strokeWidth={3}
                       >
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          strokeWidth={2}
                           d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
                         />
                       </svg>
@@ -275,19 +170,19 @@ export function ProfileSection({
                   </button>
                 </div>
               </div>
-              <div className="flex items-center justify-between border-b border-gray-100 py-2">
-                <span className="text-sm font-medium text-gray-600">
-                  Balance XLM:
+              <div className="flex items-center justify-between border-b-3 border-[#2C1810] py-2">
+                <span className="text-sm font-bold text-[#5D4E37] uppercase">
+                  XLM Balance:
                 </span>
-                <span className="font-semibold text-gray-900">
+                <span className="font-bold text-[#2C1810]">
                   {walletState.xlm}
                 </span>
               </div>
               <div className="flex items-center justify-between py-2">
-                <span className="text-sm font-medium text-gray-600">
-                  Balance USDC:
+                <span className="text-sm font-bold text-[#5D4E37] uppercase">
+                  USDC Balance:
                 </span>
-                <span className="font-semibold text-gray-900">
+                <span className="font-bold text-[#2C1810]">
                   {walletState.usdc}
                 </span>
               </div>

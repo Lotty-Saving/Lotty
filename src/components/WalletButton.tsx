@@ -24,10 +24,10 @@ export const WalletButton = () => {
       <Button
         type="button"
         variant="outline"
-        className="cursor-pointer"
+        className="cursor-pointer border-3 border-[#2C1810] bg-[#FFD93D] font-bold text-[#2C1810] shadow-md transition-all hover:scale-105 hover:border-[#2C1810] hover:bg-[#F4A825] hover:shadow-[4px_4px_0px_0px_rgba(44,24,16,1)] active:translate-x-1 active:translate-y-1 active:shadow-none"
         onClick={() => void connectWallet()}
       >
-        <WalletIcon /> {buttonLabel}
+        <WalletIcon className="h-5 w-5" /> {buttonLabel}
       </Button>
     );
   }
@@ -40,20 +40,22 @@ export const WalletButton = () => {
         <Button
           type="button"
           variant="outline"
-          className="cursor-pointer"
+          className="cursor-pointer border-3 border-[#2C1810] bg-[#F4A825] font-bold text-[#FFF8DC] shadow-md transition-all hover:scale-105 hover:border-[#2C1810] hover:bg-[#FFD93D] hover:text-[#2C1810] hover:shadow-[4px_4px_0px_0px_rgba(44,24,16,1)] active:translate-x-1 active:translate-y-1 active:shadow-none"
           title={address}
         >
-          <WalletIcon />
+          <WalletIcon className="h-5 w-5" />
           {shortAddress}
         </Button>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="border-4 border-[#2C1810] bg-[#FFF8DC] shadow-2xl">
         <DialogHeader>
-          <DialogTitle>Disconnect Wallet</DialogTitle>
-          <DialogDescription>
+          <DialogTitle className="cuphead-text text-2xl font-bold text-[#2C1810]">
+            Disconnect Wallet
+          </DialogTitle>
+          <DialogDescription className="text-[#5D4E37]">
             Are you sure you want to disconnect your wallet?
             <br />
-            <code className="mt-2 flex items-center justify-center gap-2 rounded bg-amber-500/10 px-2 py-1 text-xs text-amber-500">
+            <code className="mt-3 flex items-center justify-center gap-2 rounded-lg border-3 border-[#2C1810] bg-[#FFD93D]/30 px-3 py-2 text-xs font-bold text-[#2C1810]">
               <WalletIcon className="h-4 w-4" />
               {address}
             </code>
@@ -63,7 +65,7 @@ export const WalletButton = () => {
           <Button
             variant="outline"
             onClick={() => setOpen(false)}
-            className="cursor-pointer"
+            className="cursor-pointer border-3 border-[#2C1810] bg-[#F5E6D3] font-bold text-[#2C1810] transition-all hover:scale-105 hover:bg-[#E8D5B7] hover:shadow-[3px_3px_0px_0px_rgba(44,24,16,1)]"
           >
             Cancel
           </Button>
@@ -72,7 +74,7 @@ export const WalletButton = () => {
               disconnectWallet();
               setOpen(false);
             }}
-            className="cursor-pointer bg-amber-500 text-white hover:bg-amber-600"
+            className="cursor-pointer border-3 border-[#2C1810] bg-[#D62828] font-bold text-[#FFF8DC] transition-all hover:scale-105 hover:bg-[#A02020] hover:shadow-[3px_3px_0px_0px_rgba(44,24,16,1)] active:translate-x-1 active:translate-y-1 active:shadow-none"
           >
             <LogOutIcon className="h-4 w-4" /> Disconnect
           </Button>

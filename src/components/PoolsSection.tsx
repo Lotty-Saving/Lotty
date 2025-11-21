@@ -2,9 +2,7 @@
 
 import { Card } from "~/components/ui/card";
 import { Badge } from "~/components/ui/badge";
-import { Button } from "~/components/ui/button";
-import { Input } from "~/components/ui/input";
-import { Shield, TrendingUp, Trophy, Clock, Coins } from "lucide-react";
+import { Shield, TrendingUp, Trophy, Clock } from "lucide-react";
 
 interface PoolsSectionProps {
   address: string | null;
@@ -21,41 +19,33 @@ interface PoolsSectionProps {
     minutes: number;
     seconds: number;
   };
-  ticketAmount: number;
-  setTicketAmount: (amount: number) => void;
-  mockTickets: Array<{
-    id: string;
-    amount: number;
-    date: string;
-  }>;
 }
 
 export function PoolsSection({
   address,
   poolData,
   timeRemaining,
-  ticketAmount,
-  setTicketAmount,
-  mockTickets,
 }: PoolsSectionProps) {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-gray-900">Pool de Liquidez</h2>
-        <p className="mt-1 text-sm text-gray-600">
-          Información del pool actual y gestiona tus tickets
+        <h2 className="cuphead-text text-2xl font-bold text-[#2C1810]">
+          Liquidity Pool
+        </h2>
+        <p className="mt-1 text-sm font-bold text-[#5D4E37]">
+          Current pool information and statistics
         </p>
       </div>
 
       {!address && (
-        <Card className="border-blue-200 bg-linear-to-br from-blue-50 to-blue-100 p-8">
+        <Card className="border-4 border-[#2C1810] bg-[#FFD93D] p-8 shadow-2xl">
           <div className="flex flex-col items-center justify-center text-center">
-            <Shield className="mb-4 h-16 w-16 text-blue-600" />
-            <h3 className="mb-2 text-xl font-semibold text-gray-900">
-              Conecta tu Wallet
+            <Shield className="mb-4 h-16 w-16 text-[#2C1810]" />
+            <h3 className="cuphead-text mb-2 text-xl font-bold text-[#2C1810]">
+              Connect Your Wallet
             </h3>
-            <p className="text-sm text-gray-600">
-              Conecta tu wallet para participar en el pool
+            <p className="text-sm font-bold text-[#5D4E37]">
+              Connect your wallet to participate in the pool
             </p>
           </div>
         </Card>
@@ -65,171 +55,98 @@ export function PoolsSection({
         <>
           {/* Pool Info Grid */}
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-            <Card className="p-6">
+            <Card className="border-4 border-[#2C1810] bg-[#FFF8DC] p-6 shadow-lg transition-all hover:scale-105 hover:shadow-[4px_4px_0px_0px_rgba(44,24,16,1)]">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-600">Pool Total</p>
-                  <p className="mt-1 text-2xl font-bold text-gray-900">
+                  <p className="text-sm font-bold text-[#5D4E37] uppercase">
+                    Total Pool
+                  </p>
+                  <p className="cuphead-text mt-1 text-2xl font-bold text-[#2C1810]">
                     ${(poolData.totalPool / 1000).toFixed(1)}M USD
                   </p>
-                  <p className="mt-1 text-xs text-gray-500">
+                  <p className="mt-1 text-xs font-medium text-[#5D4E37]">
                     ≈ ${(poolData.totalPool * 1000).toLocaleString()} ARS
                   </p>
                 </div>
-                <TrendingUp className="h-8 w-8 text-purple-600" />
+                <TrendingUp className="h-8 w-8 text-[#D62828]" />
               </div>
             </Card>
 
-            <Card className="p-6">
+            <Card className="border-4 border-[#2C1810] bg-[#FFD93D] p-6 shadow-lg transition-all hover:scale-105 hover:shadow-[4px_4px_0px_0px_rgba(44,24,16,1)]">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-600">
-                    Premio ({poolData.apy}% APY)
+                  <p className="text-sm font-bold text-[#5D4E37] uppercase">
+                    Prize ({poolData.apy}% APY)
                   </p>
-                  <p className="mt-1 text-2xl font-bold text-gray-900">
+                  <p className="cuphead-text mt-1 text-2xl font-bold text-[#2C1810]">
                     ${poolData.prize.toLocaleString()} USD
                   </p>
-                  <p className="mt-1 text-xs text-gray-500">
+                  <p className="mt-1 text-xs font-medium text-[#5D4E37]">
                     ≈ ${(poolData.prize * 1781).toLocaleString()} ARS
                   </p>
                 </div>
-                <Trophy className="h-8 w-8 text-yellow-600" />
+                <Trophy className="h-8 w-8 text-[#2C1810]" />
               </div>
             </Card>
 
-            <Card className="p-6">
+            <Card className="border-4 border-[#2C1810] bg-[#F5E6D3] p-6 shadow-lg transition-all hover:scale-105 hover:shadow-[4px_4px_0px_0px_rgba(44,24,16,1)]">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-600">Próximo Sorteo</p>
-                  <p className="mt-1 text-2xl font-bold text-gray-900">
+                  <p className="text-sm font-bold text-[#5D4E37] uppercase">
+                    Next Draw
+                  </p>
+                  <p className="cuphead-text mt-1 text-2xl font-bold text-[#D62828]">
                     {String(timeRemaining.hours).padStart(2, "0")}:
                     {String(timeRemaining.minutes).padStart(2, "0")}:
                     {String(timeRemaining.seconds).padStart(2, "0")}
                   </p>
-                  <p className="mt-1 text-xs text-gray-500">
+                  <p className="mt-1 text-xs font-medium text-[#5D4E37]">
                     Round #{poolData.round}
                   </p>
                 </div>
-                <Clock className="h-8 w-8 text-blue-600" />
+                <Clock className="h-8 w-8 text-[#2C1810]" />
               </div>
             </Card>
           </div>
 
           {/* Additional Pool Stats */}
-          <Card className="p-6">
-            <h3 className="mb-4 text-lg font-semibold text-gray-900">
-              Estadísticas del Pool
+          <Card className="border-4 border-[#2C1810] bg-[#FFF8DC] p-6 shadow-2xl">
+            <h3 className="cuphead-text mb-4 text-lg font-bold text-[#2C1810]">
+              Pool Statistics
             </h3>
             <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
               <div>
-                <p className="text-sm text-gray-600">APY</p>
-                <p className="mt-1 text-xl font-bold text-gray-900">
+                <p className="text-sm font-bold text-[#5D4E37] uppercase">
+                  APY
+                </p>
+                <p className="mt-1 text-xl font-bold text-[#2C1810]">
                   ~{poolData.apy}%
                 </p>
               </div>
               <div>
-                <p className="text-sm text-gray-600">Tickets Totales</p>
-                <p className="mt-1 text-xl font-bold text-gray-900">
+                <p className="text-sm font-bold text-[#5D4E37] uppercase">
+                  Total Tickets
+                </p>
+                <p className="mt-1 text-xl font-bold text-[#2C1810]">
                   {poolData.tickets.toLocaleString()}
                 </p>
               </div>
               <div>
-                <p className="text-sm text-gray-600">Ganadores</p>
-                <p className="mt-1 text-xl font-bold text-gray-900">
+                <p className="text-sm font-bold text-[#5D4E37] uppercase">
+                  Winners
+                </p>
+                <p className="mt-1 text-xl font-bold text-[#2C1810]">
                   {poolData.winners}
                 </p>
               </div>
               <div>
-                <p className="text-sm text-gray-600">Tu Estado</p>
-                <Badge className="mt-1 bg-green-100 text-green-700">
-                  Participando
+                <p className="text-sm font-bold text-[#5D4E37] uppercase">
+                  Your Status
+                </p>
+                <Badge className="mt-1 border-2 border-[#2C1810] bg-[#FFD93D] font-bold text-[#2C1810]">
+                  Participating
                 </Badge>
               </div>
-            </div>
-          </Card>
-
-          {/* Purchase Tickets */}
-          <Card className="p-6">
-            <h3 className="mb-4 text-lg font-semibold text-gray-900">
-              Comprar Tickets
-            </h3>
-            <div className="space-y-4">
-              <div>
-                <label className="mb-2 block text-sm font-medium text-gray-700">
-                  Cantidad de Tickets
-                </label>
-                <Input
-                  type="number"
-                  min="1"
-                  value={ticketAmount}
-                  onChange={(e) => setTicketAmount(Number(e.target.value))}
-                  className="w-full"
-                />
-              </div>
-              <div className="rounded-lg bg-gray-50 p-4">
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-600">Precio por ticket:</span>
-                  <span className="font-semibold">$10.00 USD</span>
-                </div>
-                <div className="mt-2 flex justify-between text-lg font-bold">
-                  <span className="text-gray-900">Total a pagar:</span>
-                  <span className="text-purple-600">
-                    ${(ticketAmount * 10).toFixed(2)} USD
-                  </span>
-                </div>
-              </div>
-              <div className="rounded-lg border border-blue-200 bg-blue-50 p-4">
-                <h4 className="mb-2 font-semibold text-blue-900">
-                  Cómo Funciona
-                </h4>
-                <ul className="space-y-1 text-sm text-blue-800">
-                  <li>• Precio fijo: 10 USD por ticket</li>
-                  <li>• Cada ticket tiene igual probabilidad de ganar</li>
-                  <li>• Sin límite de compra por usuario</li>
-                  <li>• Tus fondos generan rendimiento mientras participas</li>
-                </ul>
-              </div>
-              <Button
-                className="w-full bg-purple-600 hover:bg-purple-700"
-                size="lg"
-              >
-                Comprar Tickets
-              </Button>
-            </div>
-          </Card>
-
-          {/* Your Tickets */}
-          <Card className="p-6">
-            <h3 className="mb-4 text-lg font-semibold text-gray-900">
-              Tus Tickets
-            </h3>
-            <div className="space-y-3">
-              {mockTickets.map((ticket) => (
-                <div
-                  key={ticket.id}
-                  className="flex items-center justify-between rounded-lg border border-gray-200 p-4 transition-colors hover:bg-gray-50"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="rounded-lg bg-purple-100 p-3">
-                      <Coins className="h-5 w-5 text-purple-600" />
-                    </div>
-                    <div>
-                      <p className="font-mono font-semibold text-gray-900">
-                        {ticket.id}
-                      </p>
-                      <p className="text-sm text-gray-600">{ticket.date}</p>
-                    </div>
-                  </div>
-                  <div className="text-right">
-                    <p className="font-semibold text-gray-900">
-                      ${ticket.amount.toFixed(2)} USD
-                    </p>
-                    <Button variant="outline" size="sm" className="mt-2">
-                      Redeem
-                    </Button>
-                  </div>
-                </div>
-              ))}
             </div>
           </Card>
         </>
