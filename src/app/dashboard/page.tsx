@@ -52,11 +52,10 @@ export default function DashboardPage() {
   };
 
   const mockTickets = [
-    { id: "#7F3A", amount: 10, date: "2024-01-15" },
-    { id: "#9B2E", amount: 10, date: "2024-01-18" },
-    { id: "#4D1C", amount: 10, date: "2024-01-20" },
-    { id: "#2A8F", amount: 10, date: "2024-01-22" },
-    { id: "#56EF", amount: 10, date: "2024-01-22" },
+    { id: "#7F3A", amount: "$10.00", date: "2024-01-15" },
+    { id: "#9B2E", amount: "$10.00", date: "2024-01-18" },
+    { id: "#4D1C", amount: "$10.00", date: "2024-01-20" },
+    { id: "#2A8F", amount: "$10.00", date: "2024-01-22" },
   ];
 
   useEffect(() => {
@@ -150,7 +149,7 @@ export default function DashboardPage() {
   }
 
   return (
-    <main className="relative flex h-screen w-screen flex-col bg-gradient-to-b from-[#FFF8DC] to-[#F5E6D3]">
+    <main className="relative flex h-screen w-screen flex-col bg-[#FFF8DC]">
       {/* Header */}
       <header className="flex w-full justify-between px-6 py-2">
         <Image
@@ -166,7 +165,7 @@ export default function DashboardPage() {
       {/* Contenido principal */}
       <section className="flex h-[calc(100vh-54px)] w-full gap-4 p-6 pt-0">
         {/* Navegación */}
-        <nav className="h-full w-full max-w-[280px] py-4">
+        <nav className="flex h-full w-full max-w-[280px] flex-col justify-between py-4">
           <div className="flex flex-col gap-4 p-2">
             {[
               {
@@ -257,7 +256,7 @@ export default function DashboardPage() {
                 className={`flex w-full cursor-pointer items-center gap-3 rounded-lg border-3 px-4 py-3 text-left text-sm font-bold transition-all duration-200 ${
                   activeTab === item.id
                     ? "scale-105 border-[#2C1810] bg-[#FFD93D] text-[#2C1810] shadow-lg"
-                    : "border-transparent text-[#5D4E37] hover:scale-102 hover:border-[#2C1810] hover:bg-[#F4A825]"
+                    : "border-transparent text-[#5D4E37] hover:scale-105 hover:border-[#2C1810]"
                 }`}
               >
                 <span
@@ -271,9 +270,20 @@ export default function DashboardPage() {
               </button>
             ))}
           </div>
+          <div className="flex w-full justify-center">
+            <div className="animate-bounce-slow relative">
+              <Image
+                src="/lottyGuy.png"
+                alt="Lotty"
+                width={150}
+                height={150}
+                className="hover:animate-rubber-band drop-shadow-2xl transition-transform hover:scale-110"
+              />
+            </div>
+          </div>
         </nav>
 
-        <Card className="flex-1 overflow-y-auto scroll-auto border-4 border-[#2C1810] bg-[#FFF8DC] p-6 shadow-2xl">
+        <Card className="flex-1 overflow-y-auto scroll-auto border-4 border-[#2C1810] bg-white p-6 shadow-2xl">
           {renderContent()}
         </Card>
       </section>
