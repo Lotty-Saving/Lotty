@@ -53,12 +53,12 @@
   /* Colores Cuphead - Paleta Amarilla Vintage */
   --cuphead-yellow: #FFD93D;
   --cuphead-dark-yellow: #F4A825;
-  --cuphead-cream: #FFF8DC;
+  --cuphead-cream: #fefcf4;
   --cuphead-sepia: #E8D5B7;
   --cuphead-brown: #5D4E37;
   --cuphead-black: #2C1810;
   --cuphead-red: #D62828;
-  --cuphead-beige: #F5E6D3;
+  --cuphead-beige: #fefcf4;
 
   /* Updated theme to vintage cartoon with warm yellow, cream, and dark charcoal */
   --background: oklch(0.97 0.02 85); /* Cream/off-white */

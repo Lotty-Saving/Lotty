@@ -1,6 +1,5 @@
 "use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { Badge } from "~/components/ui/badge";
@@ -34,13 +33,13 @@ export function TicketsSection({
       </div>
 
       <div className="flex w-full flex-1 gap-8">
-        <Card className="border-foreground h-full w-1/2 border-4 bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-          <CardHeader className="bg-card pb-1">
-            <CardTitle className="flex items-center gap-2 text-2xl font-black uppercase">
+        <div className="h-full w-1/2 items-center justify-between rounded-2xl bg-[#fefcf4]">
+          <div className="p-6 pb-1">
+            <h3 className="flex items-center gap-2 text-2xl font-black uppercase">
               <span className="text-primary">{">"}</span> PURCHASE_TICKET
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="bg-card space-y-6">
+            </h3>
+          </div>
+          <div className="space-y-6 p-6">
             <div className="space-y-4">
               <div>
                 <label className="text-muted-foreground mb-2 block text-xs font-bold uppercase">
@@ -106,15 +105,15 @@ export function TicketsSection({
                 {">"} COMPRAR TICKETS
               </span>
             </Button>
-          </CardContent>
-        </Card>
-        <Card className="border-foreground h-full w-1/2 border-4 bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-          <CardHeader className="bg-card pb-1">
-            <CardTitle className="flex items-center gap-2 text-2xl font-black uppercase">
+          </div>
+        </div>
+        <div className="h-full w-1/2 rounded-2xl bg-[#fefcf4]">
+          <div className="bg-card p-6 pb-1">
+            <h3 className="flex items-center gap-2 text-2xl font-black uppercase">
               <span className="text-primary">{">"}</span> YOUR_TICKETS
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="bg-card">
+            </h3>
+          </div>
+          <div className="bg-card p-6">
             <div className="space-y-3">
               {mockTickets.map((ticket, idx) => (
                 <div
@@ -151,8 +150,8 @@ export function TicketsSection({
                 </div>
               ))}
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -2,8 +2,8 @@
 
 import { Card } from "~/components/ui/card";
 import { Badge } from "~/components/ui/badge";
-import { Users, Flame, Snowflake } from "lucide-react";
-
+import { Users } from "lucide-react";
+import Image from "next/image";
 interface SavingStreakSectionProps {
   address: string | null;
   userStats: {
@@ -12,6 +12,13 @@ interface SavingStreakSectionProps {
     currentAPY: number;
   };
 }
+
+const fireIcon = (
+  <Image src="/lottyFire.png" alt="Fire" width={64} height={64} />
+);
+const snowflakeIcon = (
+  <Image src="/lottyCopo.png" alt="Snowflake" width={64} height={64} />
+);
 
 export function SavingStreakSection({
   address,
@@ -45,13 +52,13 @@ export function SavingStreakSection({
       {address && (
         <>
           {/* Saving Streak */}
-          <Card className="border-4 border-[#2C1810] bg-[#FFF8DC] p-6 shadow-2xl">
+          <Card className="border-4 border-[#2C1810] bg-[#fefcf4] p-6 shadow-2xl">
             <h3 className="cuphead-text mb-4 text-lg font-bold text-[#2C1810]">
               Your Current Streak
             </h3>
             <div className="mb-6 text-center">
               <div className="inline-flex items-center gap-2 rounded-full border-4 border-[#2C1810] bg-[#FFD93D] px-6 py-3 shadow-lg">
-                <Flame className="h-6 w-6 text-[#D62828]" />
+                {fireIcon}
                 <span className="cuphead-text text-3xl font-bold text-[#2C1810]">
                   {userStats.streak}
                 </span>
@@ -72,14 +79,12 @@ export function SavingStreakSection({
                         className={`mb-2 flex h-12 w-full items-center justify-center rounded-lg border-3 border-[#2C1810] ${
                           userStats.weekActivity[index]
                             ? "bg-[#FFD93D]"
-                            : "bg-[#F5E6D3]"
+                            : "bg-[#fefcf4]"
                         }`}
                       >
-                        {userStats.weekActivity[index] ? (
-                          <Flame className="h-6 w-6 text-[#D62828]" />
-                        ) : (
-                          <Snowflake className="h-6 w-6 text-[#5D4E37]" />
-                        )}
+                        {userStats.weekActivity[index]
+                          ? fireIcon
+                          : snowflakeIcon}
                       </div>
                       <p className="text-xs font-bold text-[#5D4E37]">{day}</p>
                     </div>
@@ -94,7 +99,7 @@ export function SavingStreakSection({
           </Card>
 
           {/* Streak Rewards */}
-          <Card className="border-4 border-[#2C1810] bg-[#F5E6D3] p-6 shadow-2xl">
+          <Card className="border-4 border-[#2C1810] bg-[#fefcf4] p-6 shadow-2xl">
             <h3 className="cuphead-text mb-4 text-lg font-bold text-[#2C1810]">
               Streak Rewards
             </h3>
@@ -113,15 +118,11 @@ export function SavingStreakSection({
                 <div
                   key={reward.days}
                   className={`flex items-center justify-between rounded-lg border-3 border-[#2C1810] p-4 transition-all hover:scale-102 ${
-                    reward.active ? "bg-[#FFD93D]" : "bg-[#FFF8DC]"
+                    reward.active ? "bg-[#FFD93D]" : "bg-[#fefcf4]"
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    {reward.active ? (
-                      <Flame className="h-5 w-5 text-[#D62828]" />
-                    ) : (
-                      <Snowflake className="h-5 w-5 text-[#5D4E37]" />
-                    )}
+                    {reward.active ? fireIcon : snowflakeIcon}
                     <span
                       className={`font-bold ${
                         reward.active ? "text-[#2C1810]" : "text-[#5D4E37]"
@@ -133,7 +134,7 @@ export function SavingStreakSection({
                   <Badge
                     className={
                       reward.active
-                        ? "border-2 border-[#2C1810] bg-[#D62828] font-bold text-[#FFF8DC]"
+                        ? "border-2 border-[#2C1810] bg-[#D62828] font-bold text-[#fefcf4]"
                         : "border-2 border-[#2C1810] bg-[#E8D5B7] font-bold text-[#5D4E37]"
                     }
                   >
@@ -147,7 +148,7 @@ export function SavingStreakSection({
           {/* Tips Card */}
           <Card className="border-4 border-[#2C1810] bg-[#FFD93D] p-6 shadow-2xl">
             <div className="flex items-start gap-4">
-              <Flame className="h-8 w-8 flex-shrink-0 text-[#D62828]" />
+              {fireIcon}
               <div>
                 <h3 className="cuphead-text mb-2 text-lg font-bold text-[#2C1810]">
                   Streak Tips

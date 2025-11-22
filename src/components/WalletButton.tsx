@@ -40,14 +40,14 @@ export const WalletButton = () => {
         <Button
           type="button"
           variant="outline"
-          className="cursor-pointer border-3 border-[#2C1810] bg-[#FFD93D] font-bold text-[#2C1810] shadow-md transition-all hover:scale-105 hover:border-[#2C1810] hover:bg-[#F4A825] hover:text-[#FFF8DC] hover:shadow-[4px_4px_0px_0px_rgba(44,24,16,1)] active:translate-x-1 active:translate-y-1 active:shadow-none"
+          className="cursor-pointer border-3 border-[#2C1810] bg-[#FFD93D] font-bold text-[#2C1810] shadow-md transition-all hover:scale-105 hover:border-[#2C1810] hover:bg-[#F4A825] hover:text-[#fefcf4] hover:shadow-[4px_4px_0px_0px_rgba(44,24,16,1)] active:translate-x-1 active:translate-y-1 active:shadow-none"
           title={address}
         >
           <WalletIcon className="h-5 w-5" />
           {shortAddress}
         </Button>
       </DialogTrigger>
-      <DialogContent className="border-4 border-[#2C1810] bg-[#FFF8DC] shadow-2xl">
+      <DialogContent className="border-4 border-[#2C1810] bg-[#fefcf4] shadow-2xl">
         <DialogHeader>
           <DialogTitle className="cuphead-text text-2xl font-bold text-[#2C1810]">
             Disconnect Wallet
@@ -65,7 +65,7 @@ export const WalletButton = () => {
           <Button
             variant="outline"
             onClick={() => setOpen(false)}
-            className="cursor-pointer border-3 border-[#2C1810] bg-[#F5E6D3] font-bold text-[#2C1810] transition-all hover:scale-105 hover:bg-[#E8D5B7] hover:shadow-[3px_3px_0px_0px_rgba(44,24,16,1)]"
+            className="cursor-pointer border-3 border-[#2C1810] bg-[#fefcf4] font-bold text-[#2C1810] transition-all hover:scale-105 hover:bg-[#E8D5B7] hover:shadow-[3px_3px_0px_0px_rgba(44,24,16,1)]"
           >
             Cancel
           </Button>
@@ -74,7 +74,7 @@ export const WalletButton = () => {
               disconnectWallet();
               setOpen(false);
             }}
-            className="cursor-pointer border-3 border-[#2C1810] bg-[#D62828] font-bold text-[#FFF8DC] transition-all hover:scale-105 hover:bg-[#A02020] hover:shadow-[3px_3px_0px_0px_rgba(44,24,16,1)] active:translate-x-1 active:translate-y-1 active:shadow-none"
+            className="cursor-pointer border-3 border-[#2C1810] bg-[#D62828] font-bold text-[#fefcf4] transition-all hover:scale-105 hover:bg-[#A02020] hover:shadow-[3px_3px_0px_0px_rgba(44,24,16,1)] active:translate-x-1 active:translate-y-1 active:shadow-none"
           >
             <LogOutIcon className="h-4 w-4" /> Disconnect
           </Button>

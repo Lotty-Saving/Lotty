@@ -55,7 +55,7 @@ export function PoolsSection({
         <>
           {/* Pool Info Grid */}
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-            <Card className="border-4 border-[#2C1810] bg-[#FFF8DC] p-6 shadow-lg transition-all hover:scale-105 hover:shadow-[4px_4px_0px_0px_rgba(44,24,16,1)]">
+            <Card className="border-4 border-[#2C1810] bg-[#fefcf4] p-6 shadow-lg transition-all hover:scale-105 hover:shadow-[4px_4px_0px_0px_rgba(44,24,16,1)]">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-bold text-[#5D4E37] uppercase">
@@ -89,7 +89,7 @@ export function PoolsSection({
               </div>
             </Card>
 
-            <Card className="border-4 border-[#2C1810] bg-[#F5E6D3] p-6 shadow-lg transition-all hover:scale-105 hover:shadow-[4px_4px_0px_0px_rgba(44,24,16,1)]">
+            <Card className="border-4 border-[#2C1810] bg-[#fefcf4] p-6 shadow-lg transition-all hover:scale-105 hover:shadow-[4px_4px_0px_0px_rgba(44,24,16,1)]">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-bold text-[#5D4E37] uppercase">
@@ -110,7 +110,7 @@ export function PoolsSection({
           </div>
 
           {/* Additional Pool Stats */}
-          <Card className="border-4 border-[#2C1810] bg-[#FFF8DC] p-6 shadow-2xl">
+          <Card className="border-4 border-[#2C1810] bg-[#fefcf4] p-6 shadow-2xl">
             <h3 className="cuphead-text mb-4 text-lg font-bold text-[#2C1810]">
               Pool Statistics
             </h3>

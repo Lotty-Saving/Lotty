@@ -47,10 +47,10 @@ export function ProfileSection({
         </p>
       </div>
 
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-8">
         {/* User Overview */}
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          <Card className="border-4 border-[#2C1810] bg-white p-6 shadow-lg transition-all hover:scale-105 hover:shadow-[4px_4px_0px_0px_rgba(44,24,16,1)]">
+          <div className="border-b-2 border-[#2C1810] p-6">
             <div className="flex items-start justify-between">
               <div>
                 <p className="text-sm font-bold text-[#5D4E37] uppercase">
@@ -62,9 +62,9 @@ export function ProfileSection({
               </div>
               <Coins className="h-8 w-8 text-[#FFD93D]" />
             </div>
-          </Card>
+          </div>
 
-          <Card className="border-4 border-[#2C1810] bg-white p-6 shadow-lg transition-all hover:scale-105 hover:shadow-[4px_4px_0px_0px_rgba(44,24,16,1)]">
+          <div className="border-b-2 border-[#2C1810] p-6">
             <div className="flex items-start justify-between">
               <div>
                 <p className="text-sm font-bold text-[#5D4E37] uppercase">
@@ -76,9 +76,9 @@ export function ProfileSection({
               </div>
               <Trophy className="h-8 w-8 text-[#FFD93D]" />
             </div>
-          </Card>
+          </div>
 
-          <Card className="border-4 border-[#2C1810] bg-white p-6 shadow-lg transition-all hover:scale-105 hover:shadow-[4px_4px_0px_0px_rgba(44,24,16,1)]">
+          <div className="border-b-2 border-[#2C1810] p-6">
             <div className="flex items-start justify-between">
               <div>
                 <p className="text-sm font-bold text-[#5D4E37] uppercase">
@@ -90,11 +90,11 @@ export function ProfileSection({
               </div>
               <TrendingUp className="h-8 w-8 text-[#FFD93D]" />
             </div>
-          </Card>
+          </div>
         </div>
 
         {/* Wallet Info */}
-        <Card className="border-4 border-[#2C1810] bg-white p-6 shadow-lg">
+        <div className="rounded-2xl bg-[#fefcf4] p-6 shadow-lg">
           <h3 className="cuphead-text mb-4 text-lg font-bold text-[#2C1810]">
             Wallet Information
           </h3>
@@ -107,11 +107,11 @@ export function ProfileSection({
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <span className="cursor-pointer rounded border-2 border-[#2C1810] bg-[#F5E6D3] px-2 py-1 font-mono text-sm font-bold text-[#2C1810] transition-colors hover:bg-[#FFD93D]">
+                      <span className="cursor-pointer rounded border-2 border-[#2C1810] bg-[#fefcf4] px-2 py-1 font-mono text-sm font-bold text-[#2C1810] transition-colors hover:bg-[#FFD93D]">
                         {address?.slice(0, 4)}...{address?.slice(-4)}
                       </span>
                     </TooltipTrigger>
-                    <TooltipContent className="border-3 border-[#2C1810] bg-[#FFF8DC]">
+                    <TooltipContent className="border-3 border-[#2C1810] bg-[#fefcf4]">
                       <p className="font-mono text-xs font-bold text-[#2C1810]">
                         {address}
                       </p>
@@ -120,7 +120,7 @@ export function ProfileSection({
                 </TooltipProvider>
                 <button
                   onClick={() => copyToClipboard(address ?? "")}
-                  className="rounded border-2 border-[#2C1810] bg-[#F5E6D3] p-1 transition-all hover:scale-110 hover:bg-[#FFD93D]"
+                  className="rounded border-2 border-[#2C1810] bg-[#fefcf4] p-1 transition-all hover:scale-110 hover:bg-[#FFD93D]"
                   aria-label="Copy address"
                 >
                   {copied ? (
@@ -172,7 +172,7 @@ export function ProfileSection({
               </span>
             </div>
           </div>
-        </Card>
+        </div>
       </div>
     </div>
   );

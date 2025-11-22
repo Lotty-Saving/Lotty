@@ -46,7 +46,7 @@ export function LuckySavingLanding({
 
       {/* Stats Cards con animación */}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-        <Card className="border-4 border-[#2C1810] bg-[#FFF8DC] p-6 transition-all hover:scale-110 hover:shadow-[6px_6px_0px_0px_rgba(44,24,16,1)]">
+        <Card className="border-4 border-[#2C1810] bg-[#fefcf4] p-6 transition-all hover:scale-110 hover:shadow-[6px_6px_0px_0px_rgba(44,24,16,1)]">
           <div className="flex items-start justify-between">
             <div>
               <p className="text-sm font-bold tracking-wider text-[#5D4E37] uppercase">
@@ -60,7 +60,7 @@ export function LuckySavingLanding({
           </div>
         </Card>
 
-        <Card className="border-4 border-[#2C1810] bg-[#F5E6D3] p-6 transition-all hover:scale-110 hover:shadow-[6px_6px_0px_0px_rgba(44,24,16,1)]">
+        <Card className="border-4 border-[#2C1810] bg-[#fefcf4] p-6 transition-all hover:scale-110 hover:shadow-[6px_6px_0px_0px_rgba(44,24,16,1)]">
           <div className="flex items-start justify-between">
             <div>
               <p className="text-sm font-bold tracking-wider text-[#5D4E37] uppercase">
@@ -90,7 +90,7 @@ export function LuckySavingLanding({
       </div>
 
       {/* Cómo Funciona */}
-      <Card className="border-4 border-[#2C1810] bg-[#F5E6D3] p-8 shadow-2xl">
+      <Card className="border-4 border-[#2C1810] bg-[#fefcf4] p-8 shadow-2xl">
         <h2 className="cuphead-text mb-6 text-2xl font-bold text-[#2C1810]">
           How It Works?
         </h2>
@@ -121,7 +121,7 @@ export function LuckySavingLanding({
 
           <div className="text-center">
             <div className="mb-4 flex justify-center">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full border-4 border-[#2C1810] bg-[#FFF8DC] shadow-lg">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full border-4 border-[#2C1810] bg-[#fefcf4] shadow-lg">
                 <Clock className="h-8 w-8 text-[#D62828]" />
               </div>
             </div>
@@ -134,7 +134,7 @@ export function LuckySavingLanding({
           <div className="text-center">
             <div className="mb-4 flex justify-center">
               <div className="flex h-16 w-16 items-center justify-center rounded-full border-4 border-[#2C1810] bg-[#D62828] shadow-lg">
-                <Trophy className="h-8 w-8 text-[#FFF8DC]" />
+                <Trophy className="h-8 w-8 text-[#fefcf4]" />
               </div>
             </div>
             <h3 className="mb-2 font-bold text-[#2C1810]">4. Win Prizes</h3>
@@ -147,7 +147,7 @@ export function LuckySavingLanding({
 
       {/* Beneficios */}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        <Card className="border-4 border-[#2C1810] bg-[#FFF8DC] p-6 transition-all hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(44,24,16,1)]">
+        <Card className="border-4 border-[#2C1810] bg-[#fefcf4] p-6 transition-all hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(44,24,16,1)]">
           <div className="flex items-start gap-4">
             <Shield className="mt-1 h-6 w-6 text-[#D62828]" />
             <div>
@@ -160,7 +160,7 @@ export function LuckySavingLanding({
           </div>
         </Card>
 
-        <Card className="border-4 border-[#2C1810] bg-[#FFF8DC] p-6 transition-all hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(44,24,16,1)]">
+        <Card className="border-4 border-[#2C1810] bg-[#fefcf4] p-6 transition-all hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(44,24,16,1)]">
           <div className="flex items-start gap-4">
             <Zap className="mt-1 h-6 w-6 text-[#FFD93D]" />
             <div>
@@ -173,7 +173,7 @@ export function LuckySavingLanding({
           </div>
         </Card>
 
-        <Card className="border-4 border-[#2C1810] bg-[#FFF8DC] p-6 transition-all hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(44,24,16,1)]">
+        <Card className="border-4 border-[#2C1810] bg-[#fefcf4] p-6 transition-all hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(44,24,16,1)]">
           <div className="flex items-start gap-4">
             <Users className="mt-1 h-6 w-6 text-[#F4A825]" />
             <div>
@@ -188,7 +188,7 @@ export function LuckySavingLanding({
           </div>
         </Card>
 
-        <Card className="border-4 border-[#2C1810] bg-[#FFF8DC] p-6 transition-all hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(44,24,16,1)]">
+        <Card className="border-4 border-[#2C1810] bg-[#fefcf4] p-6 transition-all hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(44,24,16,1)]">
           <div className="flex items-start gap-4">
             <TrendingUp className="mt-1 h-6 w-6 text-[#D62828]" />
             <div>
@@ -213,7 +213,7 @@ export function LuckySavingLanding({
           </p>
           <Button
             size="lg"
-            className="cursor-pointer border-4 border-[#2C1810] bg-[#D62828] font-bold text-[#FFF8DC] shadow-lg transition-all hover:scale-110 hover:bg-[#A02020] hover:shadow-[4px_4px_0px_0px_rgba(44,24,16,1)]"
+            className="cursor-pointer border-4 border-[#2C1810] bg-[#D62828] font-bold text-[#fefcf4] shadow-lg transition-all hover:scale-110 hover:bg-[#A02020] hover:shadow-[4px_4px_0px_0px_rgba(44,24,16,1)]"
             onClick={onGetStarted}
           >
             Buy Tickets Now
