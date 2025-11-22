@@ -18,8 +18,14 @@ export async function depositToVault({
   amountInUnits: string;
   signTransaction: (
     xdr: string,
-    options: { network: string },
-  ) => Promise<{ signedXdr?: string } | string>;
+    opts?: {
+      networkPassphrase?: string;
+      address?: string;
+      path?: string;
+      submit?: boolean;
+      submitUrl?: string;
+    },
+  ) => Promise<{ signedTxXdr: string; signerAddress?: string }>;
 }) {
   // userAddress: clave pública del usuario (G...)
   // amountInUnits: monto en la unidad "base" que tu contrato espera (ej: si token tiene 7 decimales)
@@ -64,15 +70,15 @@ export async function depositToVault({
   const built_tx = prepped_tx.build();
   // 4) Pedir a Freighter que firme la XDR
   const txXdr = built_tx.toXDR(); // string base64
-  const signed = await signTransaction(txXdr, { network: currentTestnet }); // devuelve signedXDR o similar
-  // Dependiendo de la versión, freighterSign puede devolver { signedXdr } o solo xdr.
-  const signedXdr =
-    typeof signed === "string" ? signed : (signed.signedXdr ?? signed);
+  const signed = await signTransaction(txXdr, {
+    networkPassphrase: currentTestnet,
+  }); // devuelve signedTxXdr
+  const signedXdr = signed.signedTxXdr;
   console.log(signedXdr, " signedXdr");
 
   // 5) Enviar transacción firmada al RPC
   const signedTransaction = TransactionBuilder.fromXDR(
-    signedXdr as string,
+    signedXdr,
     process.env.NEXT_PUBLIC_NETWORK_PASSPHRASE!,
   );
   const submitRes = await sorobanServer.sendTransaction(signedTransaction);
