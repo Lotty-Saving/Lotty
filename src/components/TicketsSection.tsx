@@ -24,9 +24,7 @@ export function TicketsSection({
   return (
     <div className="flex h-full flex-col space-y-4">
       <div className="shrink-0">
-        <h2 className="cuphead-text text-2xl font-bold text-[#2C1810]">
-          Your Tickets
-        </h2>
+        <h2 className="text-2xl font-bold text-[#2C1810]">Your Tickets</h2>
         <p className="mt-1 text-sm font-bold text-[#5D4E37]">
           Buy tickets and manage your participation
         </p>

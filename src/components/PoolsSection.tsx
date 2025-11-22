@@ -29,9 +29,7 @@ export function PoolsSection({
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="cuphead-text text-2xl font-bold text-[#2C1810]">
-          Liquidity Pool
-        </h2>
+        <h2 className="text-2xl font-bold text-[#2C1810]">Liquidity Pool</h2>
         <p className="mt-1 text-sm font-bold text-[#5D4E37]">
           Current pool information and statistics
         </p>
@@ -41,7 +39,7 @@ export function PoolsSection({
         <Card className="border-4 border-[#2C1810] bg-[#FFD93D] p-8 shadow-2xl">
           <div className="flex flex-col items-center justify-center text-center">
             <Shield className="mb-4 h-16 w-16 text-[#2C1810]" />
-            <h3 className="cuphead-text mb-2 text-xl font-bold text-[#2C1810]">
+            <h3 className="mb-2 text-xl font-bold text-[#2C1810]">
               Connect Your Wallet
             </h3>
             <p className="text-sm font-bold text-[#5D4E37]">
@@ -61,7 +59,7 @@ export function PoolsSection({
                   <p className="text-sm font-bold text-[#5D4E37] uppercase">
                     Total Pool
                   </p>
-                  <p className="cuphead-text mt-1 text-2xl font-bold text-[#2C1810]">
+                  <p className="mt-1 text-2xl font-bold text-[#2C1810]">
                     ${(poolData.totalPool / 1000).toFixed(1)}M USD
                   </p>
                   <p className="mt-1 text-xs font-medium text-[#5D4E37]">
@@ -78,7 +76,7 @@ export function PoolsSection({
                   <p className="text-sm font-bold text-[#5D4E37] uppercase">
                     Prize ({poolData.apy}% APY)
                   </p>
-                  <p className="cuphead-text mt-1 text-2xl font-bold text-[#2C1810]">
+                  <p className="mt-1 text-2xl font-bold text-[#2C1810]">
                     ${poolData.prize.toLocaleString()} USD
                   </p>
                   <p className="mt-1 text-xs font-medium text-[#5D4E37]">
@@ -95,7 +93,7 @@ export function PoolsSection({
                   <p className="text-sm font-bold text-[#5D4E37] uppercase">
                     Next Draw
                   </p>
-                  <p className="cuphead-text mt-1 text-2xl font-bold text-[#D62828]">
+                  <p className="mt-1 text-2xl font-bold text-[#D62828]">
                     {String(timeRemaining.hours).padStart(2, "0")}:
                     {String(timeRemaining.minutes).padStart(2, "0")}:
                     {String(timeRemaining.seconds).padStart(2, "0")}
@@ -111,7 +109,7 @@ export function PoolsSection({
 
           {/* Additional Pool Stats */}
           <Card className="border-4 border-[#2C1810] bg-[#fefcf4] p-6 shadow-2xl">
-            <h3 className="cuphead-text mb-4 text-lg font-bold text-[#2C1810]">
+            <h3 className="mb-4 text-lg font-bold text-[#2C1810]">
               Pool Statistics
             </h3>
             <div className="grid grid-cols-2 gap-4 md:grid-cols-4">

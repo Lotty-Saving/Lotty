@@ -39,9 +39,7 @@ export function ProfileSection({
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="cuphead-text text-2xl font-bold text-[#2C1810]">
-          Your Profile
-        </h2>
+        <h2 className="text-2xl font-bold text-[#2C1810]">Your Profile</h2>
         <p className="mt-1 text-sm font-bold text-[#5D4E37]">
           Statistics and progress of your savings
         </p>
@@ -56,7 +54,7 @@ export function ProfileSection({
                 <p className="text-sm font-bold text-[#5D4E37] uppercase">
                   Total Balance
                 </p>
-                <p className="cuphead-text mt-2 text-3xl font-bold text-[#2C1810]">
+                <p className="mt-2 text-3xl font-bold text-[#2C1810]">
                   ${poolData.userBalance}
                 </p>
               </div>
@@ -70,7 +68,7 @@ export function ProfileSection({
                 <p className="text-sm font-bold text-[#5D4E37] uppercase">
                   Active Tickets
                 </p>
-                <p className="cuphead-text mt-2 text-3xl font-bold text-[#2C1810]">
+                <p className="mt-2 text-3xl font-bold text-[#2C1810]">
                   {poolData.userTickets}
                 </p>
               </div>
@@ -84,7 +82,7 @@ export function ProfileSection({
                 <p className="text-sm font-bold text-[#5D4E37] uppercase">
                   Current APY
                 </p>
-                <p className="cuphead-text mt-2 text-3xl font-bold text-[#2C1810]">
+                <p className="mt-2 text-3xl font-bold text-[#2C1810]">
                   {userStats.currentAPY}%
                 </p>
               </div>
@@ -95,7 +93,7 @@ export function ProfileSection({
 
         {/* Wallet Info */}
         <div className="rounded-2xl bg-[#fefcf4] p-6 shadow-lg">
-          <h3 className="cuphead-text mb-4 text-lg font-bold text-[#2C1810]">
+          <h3 className="mb-4 text-lg font-bold text-[#2C1810]">
             Wallet Information
           </h3>
           <div className="space-y-3">

@@ -149,16 +149,24 @@ export default function DashboardPage() {
   }
 
   return (
-    <main className="relative flex h-screen w-screen flex-col bg-[#fefcf4]">
+    <main
+      className="relative flex h-screen w-screen flex-col"
+      // style={{
+      //   backgroundImage: "url(/lottyScreen.jpeg)",
+      //   backgroundSize: "cover",
+      //   backgroundPosition: "center",
+      //   backgroundRepeat: "no-repeat",
+      // }}
+    >
       {/* Header */}
-      <header className="flex w-full justify-between px-6 py-2">
-        <Image
+      <header className="flex w-full justify-end px-6 py-2">
+        {/* <Image
           src="/lotty.png"
           alt="Lotty"
           width={80}
           height={36}
           className="animate-wiggle ml-24"
-        />
+        /> */}
         <WalletButton />
       </header>
 
@@ -272,63 +280,72 @@ export default function DashboardPage() {
           </div>
 
           {/* Stats Cards */}
-          <div className="grid grid-cols-2 gap-3 px-4">
+          <div className="flex flex-col gap-3 px-4">
             {/* Pool Total */}
-            <div className="border-foreground rounded-xl border-2 bg-white p-4 text-center shadow-lg">
-              <p className="text-muted-foreground mb-1 text-xs font-bold uppercase">
+            <div className="group border-foreground hover:border-primary relative overflow-hidden rounded-lg border-2 bg-[#fefcf4] p-4 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              <div className="absolute top-2 right-2 text-2xl opacity-20">
+                💰
+              </div>
+              <p className="text-muted-foreground mb-1 text-xs font-bold tracking-wide uppercase">
                 Pool Total
               </p>
-              <p className="text-foreground text-xl font-black">
+              <p className="text-foreground text-2xl font-black">
                 ${(poolData.totalPool / 1000).toFixed(0)}K
               </p>
             </div>
 
             {/* User Tickets */}
-            <div className="border-foreground rounded-xl border-2 bg-white p-4 text-center shadow-lg">
-              <p className="text-muted-foreground mb-1 text-xs font-bold uppercase">
+            <div className="group border-foreground bg-primary/10 hover:border-primary relative overflow-hidden rounded-lg border-2 p-4 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              <div className="absolute top-2 right-2 text-2xl opacity-30">
+                🎟️
+              </div>
+              <p className="text-muted-foreground mb-1 text-xs font-bold tracking-wide uppercase">
                 Tus Tickets
               </p>
-              <p className="text-foreground text-xl font-black">
+              <p className="text-primary text-2xl font-black">
                 {poolData.userTickets}
               </p>
             </div>
 
             {/* Weekly Prize */}
-            <div className="border-primary bg-primary/10 rounded-xl border-2 p-4 text-center shadow-lg">
-              <p className="text-muted-foreground mb-1 text-xs font-bold uppercase">
+            <div className="group border-primary bg-primary/20 hover:border-primary relative overflow-hidden rounded-lg border-2 p-4 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(246,197,66,1)]">
+              <div className="absolute top-2 right-2 text-2xl opacity-30">
+                🏆
+              </div>
+              <p className="text-foreground/70 mb-1 text-xs font-bold tracking-wide uppercase">
                 Premio Semanal
               </p>
-              <p className="text-primary text-xl font-black">
+              <p className="text-foreground text-2xl font-black">
                 ${poolData.prize.toLocaleString()}
               </p>
             </div>
 
             {/* Jackpot */}
-            <div className="border-secondary bg-secondary/10 rounded-xl border-2 p-4 text-center shadow-lg">
-              <p className="text-muted-foreground mb-1 text-xs font-bold uppercase">
+            <div className="group border-secondary bg-secondary/10 hover:border-secondary relative overflow-hidden rounded-lg border-2 p-4 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              <div className="absolute top-2 right-2 text-2xl opacity-30">
+                💎
+              </div>
+              <p className="text-foreground/70 mb-1 text-xs font-bold tracking-wide uppercase">
                 Jackpot
               </p>
-              <p className="text-secondary text-xl font-black">
+              <p className="text-secondary text-2xl font-black">
                 ${((poolData.totalPool * 0.1) / 1000).toFixed(0)}K
               </p>
             </div>
           </div>
-
-          <div className="flex w-full justify-center">
-            <div className="animate-bounce-slow relative">
-              <Image
-                src="/lottyGuy.png"
-                alt="Lotty"
-                width={150}
-                height={150}
-                className="hover:animate-rubber-band drop-shadow-2xl transition-transform hover:scale-110"
-              />
-            </div>
-          </div>
         </nav>
 
-        <Card className="border-foreground flex-1 overflow-y-auto scroll-auto border-4 bg-[#fefcf4] p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-          {renderContent()}
+        <Card
+          className="flex-1 overflow-y-auto scroll-auto border-4 border-white/30 p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]"
+          style={{
+            background: "rgba(255, 255, 255, 0.1)",
+            backdropFilter: "blur(6px) saturate(180%)",
+            WebkitBackdropFilter: "blur(6px) saturate(180%)",
+          }}
+        >
+          <div style={{ fontFamily: "ui-sans-serif, system-ui, sans-serif" }}>
+            {renderContent()}
+          </div>
         </Card>
       </section>
     </main>

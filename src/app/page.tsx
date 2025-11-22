@@ -8,7 +8,6 @@ import {
   CardHeader,
   CardTitle,
 } from "~/components/ui/card";
-import { Badge } from "~/components/ui/badge";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
@@ -151,7 +150,7 @@ export default function LandingPage() {
                 {
                   step: "01",
                   title: "Deposit",
-                  text: "Save your money and participate in weekly prize draws",
+                  text: "Fixed price of $10 per ticket with USDC/XLM",
                   emoji: (
                     <Image
                       src="/lottyPig.png"
@@ -167,7 +166,7 @@ export default function LandingPage() {
                 {
                   step: "02",
                   title: "Win Prizes",
-                  text: "Yield from deposits fund weekly prizes",
+                  text: "Your tickets enter you into weekly prize draws",
                   emoji: (
                     <Image
                       src="/lottyRuleta.png"
@@ -183,7 +182,7 @@ export default function LandingPage() {
                 {
                   step: "03",
                   title: "No Loss",
-                  text: "No fees, withdraw your money anytime",
+                  text: "Zero fees and you cant lose, you win :)",
                   emoji: (
                     <Image
                       src="/lottyCaja.png"
@@ -256,144 +255,124 @@ export default function LandingPage() {
         id="how-it-works"
         className="container mx-auto max-w-7xl px-6 py-20"
       >
-        <Card className="border-4 border-[#2C1810] bg-[#fefcf4] p-8 shadow-2xl">
-          <h2 className="cuphead-text mb-6 text-center text-3xl font-bold text-[#2C1810] md:text-4xl">
+        <div className="mb-8 text-center">
+          <h2 className="cuphead-text mb-4 text-4xl font-bold text-[#2C1810] md:text-5xl">
             How It Works?
           </h2>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
-            {[
-              {
-                icon: "💰",
-                title: "Buy Tickets",
-                description: "Fixed price of $10 per ticket with USDC/XLM",
-              },
-              {
-                icon: "📈",
-                title: "Earn Interest",
-                description: "Your funds generate yield via DeFi protocols",
-              },
-              {
-                icon: "🎰",
-                title: "Weekly Draw",
-                description: "Every Sunday winners are randomly selected",
-              },
-              {
-                icon: "🏆",
-                title: "Win Prizes",
-                description: "Winners receive all the generated interest",
-              },
-            ].map((step, index) => (
-              <div key={index} className="text-center">
-                <div className="mb-4 flex justify-center">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full border-4 border-[#2C1810] bg-[#FFD93D] text-3xl shadow-lg">
-                    {step.icon}
-                  </div>
-                </div>
-                <h3 className="mb-2 font-bold text-[#2C1810]">{step.title}</h3>
-                <p className="text-sm font-medium text-[#5D4E37]">
-                  {step.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </Card>
-      </section>
-
-      {/* Benefits Grid */}
-      <section className="container mx-auto max-w-7xl px-6 py-16">
-        <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-[#2C1810] md:text-4xl">
-            Why Choose Lotty?
-          </h2>
+          <p className="mx-auto max-w-2xl text-lg font-semibold text-[#5D4E37]">
+            A revolutionary no-loss prize savings system where everyone wins
+          </p>
         </div>
-        <div className="grid gap-4 md:grid-cols-2">
-          {features.map((feature, index) => (
-            <Card
-              key={index}
-              className="border-4 border-[#2C1810] bg-[#fefcf4] p-6 transition-all hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(44,24,16,1)]"
-            >
-              <div className="flex items-start gap-4">
-                <div className="mt-1 rounded-full border-3 border-[#2C1810] bg-[#FFD93D] p-2 shadow-lg">
-                  {feature.icon}
-                </div>
-                <div>
-                  <h3 className="mb-2 font-bold text-[#2C1810]">
-                    {feature.title}
+
+        <div className="space-y-6">
+          {/* Step 1: Buy Tickets */}
+          <Card className="border-foreground border-4 bg-white p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+            <div className="flex flex-col items-center gap-6 md:flex-row">
+              <div className="border-foreground bg-primary flex h-20 w-20 shrink-0 items-center justify-center rounded-full border-4 text-4xl">
+                🎟️
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <div className="mb-2 flex items-center justify-center gap-2 md:justify-start">
+                  <span className="bg-foreground rounded-full px-3 py-1 text-sm font-black text-white">
+                    STEP 1
+                  </span>
+                  <h3 className="text-foreground text-2xl font-black uppercase">
+                    Buy Tickets
                   </h3>
-                  <p className="text-sm font-medium text-[#5D4E37]">
-                    {feature.description}
-                  </p>
                 </div>
-              </div>
-            </Card>
-          ))}
-        </div>
-      </section>
-
-      {/* Lotty Pig Section - Your Lucky Piggy Bank */}
-      <section className="border-y-4 border-[#2C1810] bg-gradient-to-b from-[#F4A825] to-[#FFD93D] py-20">
-        <div className="container mx-auto max-w-7xl px-6">
-          <div className="relative flex flex-col-reverse items-center gap-8 lg:flex-row lg:items-center">
-            {/* Lotty Pig - Izquierda */}
-            <div className="relative flex flex-col items-center lg:w-2/5">
-              <div className="animate-bounce-slow animation-delay-500 relative">
-                <Image
-                  src="/lottyPig.png"
-                  alt="Lotty Pig"
-                  width={320}
-                  height={320}
-                  className="hover:animate-rubber-band drop-shadow-2xl transition-transform hover:scale-110"
-                  style={{ transform: "scaleX(-1)" }}
-                  priority
-                />
-              </div>
-              <div className="mt-6 rounded-xl border-4 border-[#D62828] bg-[#2C1810] px-6 py-3 text-center shadow-lg">
-                <p className="cuphead-text text-xl font-bold text-[#D62828]">
-                  Lotty Pig
+                <p className="text-foreground/70 text-base font-semibold">
+                  Purchase tickets at a fixed price of $10 USD using USDC or
+                  XLM. Your money is safe and stays yours!
                 </p>
-                <p className="text-sm text-[#fefcf4]">Your Lucky Piggy Bank</p>
-              </div>
-
-              {/* Badge de premio */}
-              <div className="animate-wiggle absolute -top-6 -right-6 rounded-xl border-4 border-[#FFD93D] bg-[#2C1810] px-6 py-3 text-center shadow-2xl">
-                <p className="cuphead-text text-2xl font-bold text-[#FFD93D]">
-                  $3.2K
-                </p>
-                <p className="text-xs font-bold text-[#fefcf4]">NEXT PRIZE</p>
               </div>
             </div>
+          </Card>
 
-            {/* Contenido Derecha */}
-            <div className="flex-1 text-center lg:text-left">
-              <h2 className="cuphead-outline mb-6 text-4xl font-bold text-[#2C1810] md:text-5xl">
-                Save & Win <span className="text-[#D62828]">Together!</span>
-              </h2>
-              <p className="mb-6 rounded-2xl border-4 border-[#2C1810] bg-[#fefcf4]/90 px-6 py-4 text-lg font-semibold text-[#5D4E37] shadow-xl">
-                Your money is always safe, earns daily interest, and
-                participates in weekly prize draws. No risk, only rewards!
+          {/* Step 2: Generate Yield */}
+          <Card className="border-foreground border-4 bg-white p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+            <div className="flex flex-col items-center gap-6 md:flex-row">
+              <div className="border-foreground bg-secondary flex h-20 w-20 shrink-0 items-center justify-center rounded-full border-4 text-4xl">
+                📈
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <div className="mb-2 flex items-center justify-center gap-2 md:justify-start">
+                  <span className="bg-foreground rounded-full px-3 py-1 text-sm font-black text-white">
+                    STEP 2
+                  </span>
+                  <h3 className="text-foreground text-2xl font-black uppercase">
+                    Funds Generate Yield
+                  </h3>
+                </div>
+                <p className="text-foreground/70 text-base font-semibold">
+                  All tickets from all users are pooled together and deposited
+                  into DeFi protocols to generate interest throughout the week.
+                  Your principal is always protected!
+                </p>
+              </div>
+            </div>
+          </Card>
+
+          {/* Step 3: Weekly Draw */}
+          <Card className="border-foreground border-4 bg-white p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+            <div className="flex flex-col items-center gap-6 md:flex-row">
+              <div className="border-foreground bg-accent flex h-20 w-20 shrink-0 items-center justify-center rounded-full border-4 text-4xl">
+                🎰
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <div className="mb-2 flex items-center justify-center gap-2 md:justify-start">
+                  <span className="bg-foreground rounded-full px-3 py-1 text-sm font-black text-white">
+                    STEP 3
+                  </span>
+                  <h3 className="text-foreground text-2xl font-black uppercase">
+                    Weekly Prize Draw
+                  </h3>
+                </div>
+                <p className="text-foreground/70 text-base font-semibold">
+                  Every Sunday, winners are randomly selected. The generated
+                  interest is split: a percentage goes to the winners and a
+                  small fee goes to the app.
+                </p>
+              </div>
+            </div>
+          </Card>
+
+          {/* Step 4: Streak Bonus */}
+          <Card className="border-foreground bg-primary/10 border-4 p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+            <div className="flex flex-col items-center gap-6 md:flex-row">
+              <div className="border-foreground bg-primary flex h-20 w-20 shrink-0 items-center justify-center rounded-full border-4 text-4xl">
+                🔥
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <div className="mb-2 flex items-center justify-center gap-2 md:justify-start">
+                  <span className="bg-foreground rounded-full px-3 py-1 text-sm font-black text-white">
+                    BONUS
+                  </span>
+                  <h3 className="text-foreground text-2xl font-black uppercase">
+                    Streak Multiplier System
+                  </h3>
+                </div>
+                <p className="text-foreground/70 text-base font-semibold">
+                  Buy tickets on consecutive days to build your streak! The
+                  longer your streak, the higher percentage of the prize pool
+                  you'll win if you're selected. Consistency pays off!
+                </p>
+              </div>
+            </div>
+          </Card>
+
+          {/* No Loss Guarantee */}
+          <Card className="border-secondary bg-secondary/10 border-4 p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+            <div className="text-center">
+              <h3 className="text-foreground mb-3 text-3xl font-black uppercase">
+                100% No-Loss Guarantee
+              </h3>
+              <p className="text-foreground/70 mx-auto max-w-3xl text-lg font-bold">
+                Your principal is never at risk. You can withdraw your money
+                anytime. Zero fees. You literally cannot lose - you can only
+                win!
               </p>
-
-              {/* Quick Benefits */}
-              <div className="grid gap-3 md:grid-cols-2">
-                {[
-                  { emoji: "💰", text: "100% Safe" },
-                  { emoji: "📈", text: "Up to 13.5% APY" },
-                  { emoji: "🎰", text: "Weekly Prizes" },
-                  { emoji: "⚡", text: "Instant Access" },
-                ].map((benefit, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center gap-3 rounded-lg border-3 border-[#2C1810] bg-[#2C1810] px-4 py-3 shadow-lg transition-all hover:scale-105"
-                  >
-                    <span className="text-2xl">{benefit.emoji}</span>
-                    <span className="font-bold text-[#FFD93D]">
-                      {benefit.text}
-                    </span>
-                  </div>
-                ))}
-              </div>
             </div>
-          </div>
+          </Card>
         </div>
       </section>
 
@@ -402,15 +381,8 @@ export default function LandingPage() {
         <div className="container mx-auto max-w-7xl px-6">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <div className="flex items-center gap-2">
-              <Image
-                src="/lotty.png"
-                alt="Lotty"
-                width={80}
-                height={32}
-                className="animate-wiggle"
-              />
-              <span className="text-sm font-bold text-[#FFD93D]">
-                © 2024 Lotty. Powered by Stellar.
+              <span className="text-sm font-bold text-[#2C1810]">
+                Hackathon Stellar 2025 - Buenos Aires 🇦🇷
               </span>
             </div>
             <div className="flex gap-6">

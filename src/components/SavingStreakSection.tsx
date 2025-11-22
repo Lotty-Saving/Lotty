@@ -27,9 +27,7 @@ export function SavingStreakSection({
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="cuphead-text text-2xl font-bold text-[#2C1810]">
-          Saving Streak
-        </h2>
+        <h2 className="text-2xl font-bold text-[#2C1810]">Saving Streak</h2>
         <p className="mt-1 text-sm font-bold text-[#5D4E37]">
           Keep your consistency and get better rewards
         </p>
@@ -39,7 +37,7 @@ export function SavingStreakSection({
         <Card className="border-4 border-[#2C1810] bg-[#FFD93D] p-8 shadow-2xl">
           <div className="flex flex-col items-center justify-center text-center">
             <Users className="mb-4 h-16 w-16 text-[#2C1810]" />
-            <h3 className="cuphead-text mb-2 text-xl font-bold text-[#2C1810]">
+            <h3 className="mb-2 text-xl font-bold text-[#2C1810]">
               Connect Your Wallet
             </h3>
             <p className="text-sm font-bold text-[#5D4E37]">
@@ -53,13 +51,13 @@ export function SavingStreakSection({
         <>
           {/* Saving Streak */}
           <Card className="border-4 border-[#2C1810] bg-[#fefcf4] p-6 shadow-2xl">
-            <h3 className="cuphead-text mb-4 text-lg font-bold text-[#2C1810]">
+            <h3 className="mb-4 text-lg font-bold text-[#2C1810]">
               Your Current Streak
             </h3>
             <div className="mb-6 text-center">
               <div className="inline-flex items-center gap-2 rounded-full border-4 border-[#2C1810] bg-[#FFD93D] px-6 py-3 shadow-lg">
                 {fireIcon}
-                <span className="cuphead-text text-3xl font-bold text-[#2C1810]">
+                <span className="text-3xl font-bold text-[#2C1810]">
                   {userStats.streak}
                 </span>
                 <span className="text-sm font-bold text-[#5D4E37]">days</span>
@@ -100,7 +98,7 @@ export function SavingStreakSection({
 
           {/* Streak Rewards */}
           <Card className="border-4 border-[#2C1810] bg-[#fefcf4] p-6 shadow-2xl">
-            <h3 className="cuphead-text mb-4 text-lg font-bold text-[#2C1810]">
+            <h3 className="mb-4 text-lg font-bold text-[#2C1810]">
               Streak Rewards
             </h3>
             <p className="mb-4 text-sm font-bold text-[#5D4E37]">
@@ -150,7 +148,7 @@ export function SavingStreakSection({
             <div className="flex items-start gap-4">
               {fireIcon}
               <div>
-                <h3 className="cuphead-text mb-2 text-lg font-bold text-[#2C1810]">
+                <h3 className="mb-2 text-lg font-bold text-[#2C1810]">
                   Streak Tips
                 </h3>
                 <ul className="space-y-2 text-sm font-bold text-[#5D4E37]">
