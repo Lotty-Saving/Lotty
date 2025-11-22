@@ -71,7 +71,7 @@ export const WalletButton = () => {
           </Button>
           <Button
             onClick={() => {
-              disconnectWallet();
+              void disconnectWallet();
               setOpen(false);
             }}
             className="cursor-pointer border-3 border-[#2C1810] bg-[#D62828] font-bold text-[#fefcf4] transition-all hover:scale-105 hover:bg-[#A02020] hover:shadow-[3px_3px_0px_0px_rgba(44,24,16,1)] active:translate-x-1 active:translate-y-1 active:shadow-none"

@@ -354,7 +354,7 @@ export default function LandingPage() {
                 <p className="text-foreground/70 text-base font-semibold">
                   Buy tickets on consecutive days to build your streak! The
                   longer your streak, the higher percentage of the prize pool
-                  you'll win if you're selected. Consistency pays off!
+                  you&apos;ll win if you&apos;re selected. Consistency pays off!
                 </p>
               </div>
             </div>

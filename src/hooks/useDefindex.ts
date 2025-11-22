@@ -3,7 +3,7 @@ import { DefindexSDK, SupportedNetworks } from "@defindex/sdk";
 export const currentTestnet = SupportedNetworks.TESTNET;
 
 export const sdk = new DefindexSDK({
-  apiKey: process.env.NEXT_PUBLIC_DEFINDEX_API_KEY as string,
+  apiKey: process.env.NEXT_PUBLIC_DEFINDEX_API_KEY!,
   baseUrl: "https://api.defindex.io",
 });
 

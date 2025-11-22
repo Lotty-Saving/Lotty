@@ -70,7 +70,7 @@ export function TicketsSection({
             <BuyTicketsForm
               ticketAmount={ticketAmount}
               setTicketAmount={setTicketAmount}
-              address={address as string}
+              address={address!}
               isInline={true}
             />
           </div>
@@ -92,9 +92,7 @@ export function TicketsSection({
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
             <Button className="bg-primary text-primary-foreground h-12 border-4 border-[#2C1810] px-8 text-base font-black uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-              <span className="text-primary-foreground">
-                {">"} BUY TICKET
-              </span>
+              <span className="text-primary-foreground">{">"} BUY TICKET</span>
             </Button>
           </DialogTrigger>
           <DialogContent className="border-4 border-[#2C1810] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] sm:max-w-[500px]">
@@ -110,7 +108,7 @@ export function TicketsSection({
             <BuyTicketsForm
               ticketAmount={ticketAmount}
               setTicketAmount={setTicketAmount}
-              address={address as string}
+              address={address!}
             />
           </DialogContent>
         </Dialog>

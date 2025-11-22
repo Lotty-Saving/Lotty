@@ -4,6 +4,10 @@ import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { currentTestnet, sdk } from "~/hooks/useDefindex";
 import { useWallet } from "~/hooks/useWallet";
+import { toBaseUnits } from "~/utils/xlmCovert";
+import { xdr } from "@stellar/stellar-sdk";
+import { sorobanServer } from "~/hooks/useRiffle";
+import { depositToVault } from "~/soroban/deposit";
 
 interface BuyTicketsFormProps {
   ticketAmount: number;
@@ -21,35 +25,15 @@ export function BuyTicketsForm({
   const { signTransaction } = useWallet();
 
   const onBuyTickets = async () => {
-    const price = ticketAmount * 10;
-    // cambiar strops a xlm
-    const deposit = await sdk.depositToVault(
-      process.env.NEXT_PUBLIC_VAULT_ADDRESS as string,
-      {
-        amounts: [price],
-        invest: true,
-        caller: address as string,
-        slippageBps: 100,
-      },
-      currentTestnet,
-    );
+    const xlmAmount = toBaseUnits(ticketAmount);
 
-    if (!signTransaction) {
-      throw new Error("Wallet signTransaction function is not available.");
-    }
+    if (!signTransaction) return;
 
-    const signedXDR = await signTransaction(deposit.xdr);
-
-    console.log(signedXDR, " signedXDR");
-
-    // 3. Send the transaction
-    const result = await sdk.sendTransaction(
-      signedXDR.signedTxXdr,
-      currentTestnet,
-      false,
-    );
-
-    console.log(result, " result");
+    await depositToVault({
+      userAddress: address,
+      amountInUnits: xlmAmount,
+      signTransaction,
+    });
   };
 
   return (

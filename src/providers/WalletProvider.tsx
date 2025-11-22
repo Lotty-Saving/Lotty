@@ -35,8 +35,9 @@ const initialState = {
 
 const POLL_INTERVAL = 1000;
 
-export const WalletContext = // eslint-disable-line react-refresh/only-export-components
-  createContext<WalletContextType>({ isPending: true });
+export const WalletContext = createContext<WalletContextType>({
+  isPending: true,
+});
 
 export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, setState] =

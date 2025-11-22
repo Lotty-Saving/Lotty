@@ -41,12 +41,8 @@ export const useWalletBalance = () => {
       );
 
       // Get USDC balance using env variables
-      const usdcAssetCode = process.env.PUBLIC_USDC_ASSET_CODE as
-        | string
-        | undefined;
-      const usdcAssetIssuer = process.env.PUBLIC_USDC_ASSET_ISSUER as
-        | string
-        | undefined;
+      const usdcAssetCode = process.env.PUBLIC_USDC_ASSET_CODE;
+      const usdcAssetIssuer = process.env.PUBLIC_USDC_ASSET_ISSUER;
 
       let usdcBalance = "-";
       if (usdcAssetCode && usdcAssetIssuer) {
@@ -74,7 +70,7 @@ export const useWalletBalance = () => {
         error: null,
       });
     } catch (err) {
-      if (err instanceof Error && err.message.match(/not found/i)) {
+      if (err instanceof Error && /not found/i.exec(err.message)) {
         setState({
           isLoading: false,
           balances: [],
