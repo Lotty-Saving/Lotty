@@ -1,6 +1,5 @@
 "use client";
 
-import { Card } from "~/components/ui/card";
 import {
   Tooltip,
   TooltipContent,
@@ -37,67 +36,93 @@ export function ProfileSection({
   copyToClipboard,
 }: ProfileSectionProps) {
   return (
-    <div className="space-y-6">
-      <div>
-        <h2 className="text-2xl font-bold text-[#2C1810]">Your Profile</h2>
-        <p className="mt-1 text-sm font-bold text-[#5D4E37]">
-          Statistics and progress of your savings
+    <div className="flex h-full flex-col space-y-6">
+      {/* Header */}
+      <div className="shrink-0">
+        <h2 className="text-2xl font-bold text-[#2C1810]">
+          <span className="text-primary">{">"}</span> Statistics and progress of
+          your savings
+        </h2>
+        <p className="mt-2 text-base font-semibold text-[#5D4E37]">
+          Track your balance, tickets, and rewards
         </p>
       </div>
 
-      <div className="flex flex-col gap-8">
-        {/* User Overview */}
+      <div className="flex flex-col gap-6">
+        {/* User Overview Cards */}
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          <div className="border-b-2 border-[#2C1810] p-6">
+          {/* Total Balance */}
+          <div className="rounded-2xl border-4 border-[#2C1810] bg-[#fefcf4] p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
             <div className="flex items-start justify-between">
               <div>
-                <p className="text-sm font-bold text-[#5D4E37] uppercase">
+                <p className="text-xs font-bold text-[#5D4E37] uppercase">
                   Total Balance
                 </p>
-                <p className="mt-2 text-3xl font-bold text-[#2C1810]">
+                <p className="mt-3 text-3xl font-black text-[#2C1810]">
                   ${poolData.userBalance}
                 </p>
+                <p className="mt-1 text-xs font-semibold text-[#5D4E37]">
+                  USD in pool
+                </p>
               </div>
-              <Coins className="h-8 w-8 text-[#FFD93D]" />
+              <div className="rounded-full border-3 border-[#2C1810] bg-[#FFD93D] p-2">
+                <Coins className="h-6 w-6 text-[#2C1810]" strokeWidth={3} />
+              </div>
             </div>
           </div>
 
-          <div className="border-b-2 border-[#2C1810] p-6">
+          {/* Active Tickets */}
+          <div className="rounded-2xl border-4 border-[#2C1810] bg-[#FFD93D] p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
             <div className="flex items-start justify-between">
               <div>
-                <p className="text-sm font-bold text-[#5D4E37] uppercase">
+                <p className="text-xs font-bold text-[#2C1810] uppercase">
                   Active Tickets
                 </p>
-                <p className="mt-2 text-3xl font-bold text-[#2C1810]">
+                <p className="mt-3 text-3xl font-black text-[#2C1810]">
                   {poolData.userTickets}
                 </p>
+                <p className="mt-1 text-xs font-semibold text-[#2C1810]">
+                  tickets in play
+                </p>
               </div>
-              <Trophy className="h-8 w-8 text-[#FFD93D]" />
+              <div className="rounded-full border-3 border-[#2C1810] bg-white p-2">
+                <Trophy className="h-6 w-6 text-[#2C1810]" strokeWidth={3} />
+              </div>
             </div>
           </div>
 
-          <div className="border-b-2 border-[#2C1810] p-6">
+          {/* Current APY */}
+          <div className="rounded-2xl border-4 border-[#2C1810] bg-[#fefcf4] p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
             <div className="flex items-start justify-between">
               <div>
-                <p className="text-sm font-bold text-[#5D4E37] uppercase">
+                <p className="text-xs font-bold text-[#5D4E37] uppercase">
                   Current APY
                 </p>
-                <p className="mt-2 text-3xl font-bold text-[#2C1810]">
+                <p className="mt-3 text-3xl font-black text-[#2C1810]">
                   {userStats.currentAPY}%
                 </p>
+                <p className="mt-1 text-xs font-semibold text-[#5D4E37]">
+                  annual return
+                </p>
               </div>
-              <TrendingUp className="h-8 w-8 text-[#FFD93D]" />
+              <div className="rounded-full border-3 border-[#2C1810] bg-[#FFD93D] p-2">
+                <TrendingUp
+                  className="h-6 w-6 text-[#2C1810]"
+                  strokeWidth={3}
+                />
+              </div>
             </div>
           </div>
         </div>
 
         {/* Wallet Info */}
-        <div className="rounded-2xl bg-[#fefcf4] p-6 shadow-lg">
+        <div className="rounded-2xl border-4 border-[#2C1810] bg-[#fefcf4] p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
           <h3 className="mb-4 text-lg font-bold text-[#2C1810]">
-            Wallet Information
+            <span className="text-primary">{">"}</span> Wallet Information
           </h3>
-          <div className="space-y-3">
-            <div className="flex items-center justify-between border-b-3 border-[#2C1810] py-2">
+          <div className="space-y-4">
+            {/* Address */}
+            <div className="flex items-center justify-between rounded-xl border-3 border-[#2C1810] bg-white p-4">
               <span className="text-sm font-bold text-[#5D4E37] uppercase">
                 Address:
               </span>
@@ -105,7 +130,7 @@ export function ProfileSection({
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <span className="cursor-pointer rounded border-2 border-[#2C1810] bg-[#fefcf4] px-2 py-1 font-mono text-sm font-bold text-[#2C1810] transition-colors hover:bg-[#FFD93D]">
+                      <span className="cursor-pointer rounded-lg border-3 border-[#2C1810] bg-[#fefcf4] px-3 py-1 font-mono text-sm font-bold text-[#2C1810] transition-all hover:bg-[#FFD93D]">
                         {address?.slice(0, 4)}...{address?.slice(-4)}
                       </span>
                     </TooltipTrigger>
@@ -118,12 +143,12 @@ export function ProfileSection({
                 </TooltipProvider>
                 <button
                   onClick={() => copyToClipboard(address ?? "")}
-                  className="rounded border-2 border-[#2C1810] bg-[#fefcf4] p-1 transition-all hover:scale-110 hover:bg-[#FFD93D]"
+                  className="rounded-lg border-3 border-[#2C1810] bg-[#fefcf4] p-2 transition-all hover:bg-[#FFD93D]"
                   aria-label="Copy address"
                 >
                   {copied ? (
                     <svg
-                      className="h-4 w-4 text-[#D62828]"
+                      className="h-4 w-4 text-[#2C1810]"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -153,19 +178,23 @@ export function ProfileSection({
                 </button>
               </div>
             </div>
-            <div className="flex items-center justify-between border-b-3 border-[#2C1810] py-2">
+
+            {/* XLM Balance */}
+            <div className="flex items-center justify-between rounded-xl border-3 border-[#2C1810] bg-white p-4">
               <span className="text-sm font-bold text-[#5D4E37] uppercase">
                 XLM Balance:
               </span>
-              <span className="font-bold text-[#2C1810]">
+              <span className="text-lg font-black text-[#2C1810]">
                 {walletState.xlm}
               </span>
             </div>
-            <div className="flex items-center justify-between py-2">
+
+            {/* USDC Balance */}
+            <div className="flex items-center justify-between rounded-xl border-3 border-[#2C1810] bg-white p-4">
               <span className="text-sm font-bold text-[#5D4E37] uppercase">
                 USDC Balance:
               </span>
-              <span className="font-bold text-[#2C1810]">
+              <span className="text-lg font-black text-[#2C1810]">
                 {walletState.usdc}
               </span>
             </div>

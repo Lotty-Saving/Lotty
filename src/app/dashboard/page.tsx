@@ -20,11 +20,6 @@ export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState<TabId>("profile");
   const [copied, setCopied] = useState(false);
   const [ticketAmount, setTicketAmount] = useState(1);
-  const [timeRemaining, setTimeRemaining] = useState({
-    hours: 72,
-    minutes: 45,
-    seconds: 12,
-  });
 
   // Protección de ruta: redirigir si no hay wallet conectada
   useEffect(() => {
@@ -47,7 +42,7 @@ export default function DashboardPage() {
 
   const userStats = {
     streak: 78,
-    weekActivity: [true, false, true, true, false, false, false], // Lun-Dom
+    weekActivity: [true, true, false, true, true, false, false], // Lun-Dom (4 activos)
     currentAPY: 11,
   };
 
@@ -57,22 +52,6 @@ export default function DashboardPage() {
     { id: "#4D1C", amount: "$10.00", date: "2024-01-20" },
     { id: "#2A8F", amount: "$10.00", date: "2024-01-22" },
   ];
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeRemaining((prev) => {
-        if (prev.seconds > 0) {
-          return { ...prev, seconds: prev.seconds - 1 };
-        } else if (prev.minutes > 0) {
-          return { hours: prev.hours, minutes: prev.minutes - 1, seconds: 59 };
-        } else if (prev.hours > 0) {
-          return { hours: prev.hours - 1, minutes: 59, seconds: 59 };
-        }
-        return prev;
-      });
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
 
   const copyToClipboard = async (text: string) => {
     try {
@@ -109,13 +88,7 @@ export default function DashboardPage() {
         );
 
       case "pools":
-        return (
-          <PoolsSection
-            address={address ?? null}
-            poolData={poolData}
-            timeRemaining={timeRemaining}
-          />
-        );
+        return <PoolsSection address={address ?? null} poolData={poolData} />;
 
       case "saving-streak":
         return (
@@ -149,24 +122,9 @@ export default function DashboardPage() {
   }
 
   return (
-    <main
-      className="relative flex h-screen w-screen flex-col"
-      // style={{
-      //   backgroundImage: "url(/lottyScreen.jpeg)",
-      //   backgroundSize: "cover",
-      //   backgroundPosition: "center",
-      //   backgroundRepeat: "no-repeat",
-      // }}
-    >
+    <main className="relative flex h-screen w-screen flex-col">
       {/* Header */}
-      <header className="flex w-full justify-end px-6 py-2">
-        {/* <Image
-          src="/lotty.png"
-          alt="Lotty"
-          width={80}
-          height={36}
-          className="animate-wiggle ml-24"
-        /> */}
+      <header className="flex w-full shrink-0 justify-end px-6 py-2">
         <WalletButton />
       </header>
 
@@ -177,85 +135,54 @@ export default function DashboardPage() {
           <div className="flex flex-col gap-4 p-2">
             {[
               {
-                id: "profile" as TabId,
-                icon: (
-                  <svg
-                    className="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={3}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                    />
-                  </svg>
-                ),
-                label: "Your Profile",
-              },
-              {
-                id: "tickets" as TabId,
-                icon: (
-                  <svg
-                    className="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={3}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"
-                    />
-                  </svg>
-                ),
-                label: "Your Tickets",
-              },
-              {
                 id: "pools" as TabId,
                 icon: (
-                  <svg
-                    className="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={3}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-                    />
-                  </svg>
+                  <Image
+                    src="/lottyRuleta.png"
+                    alt="Pool"
+                    width={32}
+                    height={32}
+                  />
                 ),
                 label: "Pool Information",
               },
+
+              {
+                id: "tickets" as TabId,
+                icon: (
+                  <Image
+                    src="/lottyPig.png"
+                    alt="Tickets"
+                    width={32}
+                    height={32}
+                  />
+                ),
+                label: "Your Tickets",
+              },
+
               {
                 id: "saving-streak" as TabId,
                 icon: (
-                  <svg
-                    className="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={3}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"
-                    />
-                  </svg>
+                  <Image
+                    src="/lottyCaja.png"
+                    alt="Tickets"
+                    width={32}
+                    height={32}
+                  />
                 ),
                 label: "Saving Streak",
+              },
+              {
+                id: "profile" as TabId,
+                icon: (
+                  <Image
+                    src="/lottyGuy.png"
+                    alt="Tickets"
+                    width={32}
+                    height={32}
+                  />
+                ),
+                label: "Your Profile",
               },
             ].map((item) => (
               <button
@@ -295,7 +222,7 @@ export default function DashboardPage() {
             </div>
 
             {/* User Tickets */}
-            <div className="group border-foreground bg-primary/10 hover:border-primary relative overflow-hidden rounded-lg border-2 p-4 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <div className="group border-foreground hover:border-primary relative overflow-hidden rounded-lg border-2 bg-[#fefcf4] p-4 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
               <div className="absolute top-2 right-2 text-2xl opacity-30">
                 🎟️
               </div>
@@ -308,7 +235,7 @@ export default function DashboardPage() {
             </div>
 
             {/* Weekly Prize */}
-            <div className="group border-primary bg-primary/20 hover:border-primary relative overflow-hidden rounded-lg border-2 p-4 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(246,197,66,1)]">
+            <div className="group hover:border-primary relative overflow-hidden rounded-lg border-2 bg-[#fefcf4] p-4 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(246,197,66,1)]">
               <div className="absolute top-2 right-2 text-2xl opacity-30">
                 🏆
               </div>
@@ -321,7 +248,7 @@ export default function DashboardPage() {
             </div>
 
             {/* Jackpot */}
-            <div className="group border-secondary bg-secondary/10 hover:border-secondary relative overflow-hidden rounded-lg border-2 p-4 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <div className="group hover:border-secondary relative overflow-hidden rounded-lg border-2 bg-[#fefcf4] p-4 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
               <div className="absolute top-2 right-2 text-2xl opacity-30">
                 💎
               </div>
@@ -335,14 +262,7 @@ export default function DashboardPage() {
           </div>
         </nav>
 
-        <Card
-          className="flex-1 overflow-y-auto scroll-auto border-4 border-white/30 p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]"
-          style={{
-            background: "rgba(255, 255, 255, 0.1)",
-            backdropFilter: "blur(6px) saturate(180%)",
-            WebkitBackdropFilter: "blur(6px) saturate(180%)",
-          }}
-        >
+        <Card className="flex-1 overflow-y-auto scroll-auto border-0 p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.5)]">
           <div style={{ fontFamily: "ui-sans-serif, system-ui, sans-serif" }}>
             {renderContent()}
           </div>
