@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "~/components/ui/button";
-import { Input } from "~/components/ui/input";
 import { Badge } from "~/components/ui/badge";
 import {
   Dialog,
@@ -19,6 +18,7 @@ import {
   TableHeader,
   TableRow,
 } from "~/components/ui/table";
+import { BuyTicketsForm } from "~/components/BuyTicketsForm";
 import { useState } from "react";
 
 interface TicketsSectionProps {
@@ -57,82 +57,22 @@ export function TicketsSection({
         {/* Header con título */}
         <div className="shrink-0">
           <h2 className="text-2xl font-bold text-[#2C1810]">
-            <span className="text-primary">{">"}</span> Comprar Tickets
+            <span className="text-primary">{">"}</span> Buy Tickets
           </h2>
           <p className="mt-2 text-base font-semibold text-[#5D4E37]">
-            Compra tu primer ticket y participa en el sorteo
+            Buy your first ticket and participate in the draw
           </p>
         </div>
 
         {/* Contenido del formulario */}
         <div className="flex flex-1 items-center justify-center">
-          <div className="w-full max-w-md space-y-6 rounded-2xl border-4 border-[#2C1810] bg-[#fefcf4] p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-            <div className="space-y-4">
-              <div>
-                <label className="text-muted-foreground mb-2 block text-xs font-bold uppercase">
-                  Cantidad de Tickets
-                </label>
-                <Input
-                  type="number"
-                  min="1"
-                  value={ticketAmount}
-                  onChange={(e) => setTicketAmount(Number(e.target.value))}
-                  className="border-foreground bg-background h-12 border-2 text-lg font-bold"
-                />
-              </div>
-
-              <div className="bg-muted border-foreground/20 rounded-xl border-2 p-4">
-                <p className="text-muted-foreground mb-1 text-xs font-bold uppercase">
-                  Precio por Ticket
-                </p>
-                <p className="text-foreground text-2xl font-black">$10 USD</p>
-              </div>
-
-              <div className="bg-primary/20 border-foreground rounded-xl border-2 p-4">
-                <p className="text-muted-foreground mb-1 text-xs font-bold uppercase">
-                  Total a Pagar
-                </p>
-                <p className="text-foreground text-3xl font-black">
-                  ${ticketAmount * 10} USD
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-muted border-foreground/20 rounded-xl border-2 p-4">
-              <h4 className="text-foreground mb-3 text-sm font-black uppercase">
-                Cómo Funciona
-              </h4>
-              <ul className="text-foreground/80 space-y-2 text-sm font-semibold">
-                <li className="flex items-start gap-2">
-                  <span className="text-primary font-black">{">"}</span>
-                  <span>Precio fijo: 10 USD por ticket</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-primary font-black">{">"}</span>
-                  <span>Cada ticket tiene igual probabilidad de ganar</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-primary font-black">{">"}</span>
-                  <span>Sin límite de compra por usuario</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-primary font-black">{">"}</span>
-                  <span>
-                    Tus fondos generan rendimiento mientras participas
-                  </span>
-                </li>
-              </ul>
-            </div>
-
-            <Button
-              onClick={handleBuyTickets}
-              className="border-foreground bg-primary text-primary-foreground h-14 w-full border-4 text-lg font-black uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]"
-              disabled={ticketAmount === 0}
-            >
-              <span className="text-primary-foreground">
-                {">"} COMPRAR TICKETS
-              </span>
-            </Button>
+          <div className="w-full max-w-md rounded-2xl border-4 border-[#2C1810] bg-[#fefcf4] p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+            <BuyTicketsForm
+              ticketAmount={ticketAmount}
+              setTicketAmount={setTicketAmount}
+              address={address as string}
+              isInline={true}
+            />
           </div>
         </div>
       </div>
@@ -151,90 +91,27 @@ export function TicketsSection({
 
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
-            <Button className="border-foreground bg-primary text-primary-foreground h-12 border-4 px-8 text-base font-black uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+            <Button className="bg-primary text-primary-foreground h-12 border-4 border-[#2C1810] px-8 text-base font-black uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
               <span className="text-primary-foreground">
-                {">"} COMPRAR TICKET
+                {">"} BUY TICKET
               </span>
             </Button>
           </DialogTrigger>
           <DialogContent className="border-4 border-[#2C1810] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] sm:max-w-[500px]">
             <DialogHeader>
               <DialogTitle className="text-2xl font-black text-[#2C1810]">
-                Comprar Tickets
+                Buy Tickets
               </DialogTitle>
               <DialogDescription className="font-semibold text-[#5D4E37]">
-                Selecciona la cantidad de tickets que deseas comprar
+                Select the number of tickets you want to buy
               </DialogDescription>
             </DialogHeader>
 
-            <div className="space-y-6 py-4">
-              <div className="space-y-4">
-                <div>
-                  <label className="text-muted-foreground mb-2 block text-xs font-bold uppercase">
-                    Cantidad de Tickets
-                  </label>
-                  <Input
-                    type="number"
-                    min="1"
-                    value={ticketAmount}
-                    onChange={(e) => setTicketAmount(Number(e.target.value))}
-                    className="border-foreground bg-background h-12 border-2 text-lg font-bold"
-                  />
-                </div>
-
-                <div className="bg-muted border-foreground/20 rounded-xl border-2 p-4">
-                  <p className="text-muted-foreground mb-1 text-xs font-bold uppercase">
-                    Precio por Ticket
-                  </p>
-                  <p className="text-foreground text-2xl font-black">$10 USD</p>
-                </div>
-
-                <div className="bg-primary/20 border-foreground rounded-xl border-2 p-4">
-                  <p className="text-muted-foreground mb-1 text-xs font-bold uppercase">
-                    Total a Pagar
-                  </p>
-                  <p className="text-foreground text-3xl font-black">
-                    ${ticketAmount * 10} USD
-                  </p>
-                </div>
-              </div>
-
-              <div className="bg-muted border-foreground/20 rounded-xl border-2 p-4">
-                <h4 className="text-foreground mb-3 text-sm font-black uppercase">
-                  Cómo Funciona
-                </h4>
-                <ul className="text-foreground/80 space-y-2 text-sm font-semibold">
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary font-black">{">"}</span>
-                    <span>Precio fijo: 10 USD por ticket</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary font-black">{">"}</span>
-                    <span>Cada ticket tiene igual probabilidad de ganar</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary font-black">{">"}</span>
-                    <span>Sin límite de compra por usuario</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary font-black">{">"}</span>
-                    <span>
-                      Tus fondos generan rendimiento mientras participas
-                    </span>
-                  </li>
-                </ul>
-              </div>
-
-              <Button
-                onClick={handleBuyTickets}
-                className="border-foreground bg-primary text-primary-foreground h-14 w-full border-4 text-lg font-black uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]"
-                disabled={ticketAmount === 0}
-              >
-                <span className="text-primary-foreground">
-                  {">"} COMPRAR TICKETS
-                </span>
-              </Button>
-            </div>
+            <BuyTicketsForm
+              ticketAmount={ticketAmount}
+              setTicketAmount={setTicketAmount}
+              address={address as string}
+            />
           </DialogContent>
         </Dialog>
       </div>
@@ -249,13 +126,13 @@ export function TicketsSection({
                   Ticket ID
                 </TableHead>
                 <TableHead className="text-sm font-black text-[#2C1810] uppercase">
-                  Monto
+                  Amount
                 </TableHead>
                 <TableHead className="text-sm font-black text-[#2C1810] uppercase">
-                  Fecha de Compra
+                  Purchase Date
                 </TableHead>
                 <TableHead className="text-right text-sm font-black text-[#2C1810] uppercase">
-                  Acciones
+                  Actions
                 </TableHead>
               </TableRow>
             </TableHeader>

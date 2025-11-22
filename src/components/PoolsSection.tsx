@@ -115,23 +115,6 @@ export function PoolsSection({ address, poolData }: PoolsSectionProps) {
             </p>
           </div>
         </div>
-
-        {/* Premio Semanal */}
-        <div className="rounded-2xl border-4 border-[#2C1810] bg-[#FFD93D] p-5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-          <div className="text-center">
-            <p className="text-3xl">🏆</p>
-            <p className="mt-2 text-xs font-bold text-[#2C1810] uppercase">
-              Premio Semanal
-            </p>
-            <p className="mt-2 text-2xl font-black text-[#2C1810]">
-              ${poolData.prize.toLocaleString()}
-            </p>
-            <p className="mt-1 text-xs font-semibold text-[#2C1810]">
-              Para {poolData.winners} ganadores
-            </p>
-          </div>
-        </div>
-
         {/* Tickets Participando */}
         <div className="rounded-2xl border-4 border-[#2C1810] bg-[#fefcf4] p-5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
           <div className="text-center">
@@ -147,7 +130,6 @@ export function PoolsSection({ address, poolData }: PoolsSectionProps) {
             </p>
           </div>
         </div>
-
         {/* Participación del Usuario */}
         <div className="rounded-2xl border-4 border-[#2C1810] bg-[#fefcf4] p-5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
           <div className="text-center">
@@ -157,7 +139,7 @@ export function PoolsSection({ address, poolData }: PoolsSectionProps) {
             </p>
             {isParticipating ? (
               <>
-                <p className="mt-2 text-2xl font-black text-[#FFD93D]">
+                <p className="mt-2 text-2xl font-black text-[#efa831]">
                   {poolData.userTickets}
                 </p>
                 <p className="mt-1 text-xs font-semibold text-[#5D4E37]">
@@ -176,6 +158,21 @@ export function PoolsSection({ address, poolData }: PoolsSectionProps) {
             )}
           </div>
         </div>
+        {/* Weekly Prize */}
+        <div className="rounded-2xl border-4 border-[#2C1810] bg-[#FFD93D] p-5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+          <div className="text-center">
+            <p className="text-3xl">🏆</p>
+            <p className="mt-2 text-xs font-bold text-[#2C1810] uppercase">
+              Weekly Prize
+            </p>
+            <p className="mt-2 text-2xl font-black text-[#2C1810]">
+              ${poolData.prize.toLocaleString()}
+            </p>
+            <p className="mt-1 text-xs font-semibold text-[#2C1810]">
+              For {poolData.winners} winners
+            </p>
+          </div>
+        </div>{" "}
       </div>
 
       {/* Grid Secundario de Stats */}
@@ -248,17 +245,17 @@ export function PoolsSection({ address, poolData }: PoolsSectionProps) {
                     Pool ID
                   </TableHead>
                   <TableHead className="text-sm font-black text-[#2C1810] uppercase">
-                    Fecha
+                    Date
                   </TableHead>
                   <TableHead className="text-sm font-black text-[#2C1810] uppercase">
-                    Premio
+                    Prize
                   </TableHead>
 
                   <TableHead className="text-sm font-black text-[#2C1810] uppercase">
                     Total Tickets
                   </TableHead>
                   <TableHead className="text-right text-sm font-black text-[#2C1810] uppercase">
-                    Ganadores
+                    Winners
                   </TableHead>
                 </TableRow>
               </TableHeader>

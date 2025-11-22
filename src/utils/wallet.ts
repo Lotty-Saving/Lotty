@@ -9,7 +9,7 @@ import {
 export const stellarNetwork: "TESTNET" | "PUBLIC" | "LOCAL" = "TESTNET";
 
 const kit: StellarWalletsKit = new StellarWalletsKit({
-  network: "Standalone Network ; February 2017" as WalletNetwork,
+  network: "Test SDF Network ; September 2015" as WalletNetwork,
   // network: networkPassphrase as WalletNetwork,
   modules: allowAllModules(),
 });

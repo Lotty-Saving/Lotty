@@ -14,10 +14,10 @@ import { useRouter } from "next/navigation";
 type TabId = "profile" | "tickets" | "pools" | "saving-streak";
 
 export default function DashboardPage() {
-  const { address, signTransaction, isPending } = useWallet();
+  const { address, isPending } = useWallet();
   const walletState = useWalletBalance();
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState<TabId>("profile");
+  const [activeTab, setActiveTab] = useState<TabId>("pools");
   const [copied, setCopied] = useState(false);
   const [ticketAmount, setTicketAmount] = useState(1);
 
@@ -227,7 +227,7 @@ export default function DashboardPage() {
                 🎟️
               </div>
               <p className="text-muted-foreground mb-1 text-xs font-bold tracking-wide uppercase">
-                Tus Tickets
+                Your Tickets
               </p>
               <p className="text-primary text-2xl font-black">
                 {poolData.userTickets}
@@ -240,23 +240,10 @@ export default function DashboardPage() {
                 🏆
               </div>
               <p className="text-foreground/70 mb-1 text-xs font-bold tracking-wide uppercase">
-                Premio Semanal
+                Weekly Prize
               </p>
               <p className="text-foreground text-2xl font-black">
                 ${poolData.prize.toLocaleString()}
-              </p>
-            </div>
-
-            {/* Jackpot */}
-            <div className="group hover:border-secondary relative overflow-hidden rounded-lg border-2 bg-[#fefcf4] p-4 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-              <div className="absolute top-2 right-2 text-2xl opacity-30">
-                💎
-              </div>
-              <p className="text-foreground/70 mb-1 text-xs font-bold tracking-wide uppercase">
-                Jackpot
-              </p>
-              <p className="text-secondary text-2xl font-black">
-                ${((poolData.totalPool * 0.1) / 1000).toFixed(0)}K
               </p>
             </div>
           </div>

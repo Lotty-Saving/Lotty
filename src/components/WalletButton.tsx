@@ -49,7 +49,7 @@ export const WalletButton = () => {
       </DialogTrigger>
       <DialogContent className="border-4 border-[#2C1810] bg-[#fefcf4] shadow-2xl">
         <DialogHeader>
-          <DialogTitle className="cuphead-text text-2xl font-bold text-[#2C1810]">
+          <DialogTitle className="text-2xl font-bold text-[#2C1810]">
             Disconnect Wallet
           </DialogTitle>
           <DialogDescription className="text-[#5D4E37]">

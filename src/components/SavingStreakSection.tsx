@@ -59,10 +59,10 @@ export function SavingStreakSection({
         <div className="flex items-start justify-between">
           <div>
             <h2 className="text-2xl font-bold text-[#2C1810]">
-              <span className="text-primary">{">"}</span> TU RACHA
+              <span className="text-primary">{">"}</span> YOUR STREAK
             </h2>
             <p className="mt-2 text-base font-semibold text-[#5D4E37]">
-              Compra tickets 3 de 7 días de la semana para mantener tu racha
+              Buy tickets 3 out of 7 days a week to maintain your streak
             </p>
           </div>
           <div className="flex items-center gap-2">
@@ -74,26 +74,26 @@ export function SavingStreakSection({
         </div>
       </div>
 
-      {/* Resumen de tu semana */}
+      {/* Weekly Summary */}
       <div className="shrink-0 rounded-2xl border-4 border-[#2C1810] bg-[#fefcf4] p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
         <div className="mb-4 flex items-center justify-between">
           <h3 className="text-lg font-bold text-[#2C1810]">
-            resumen de tu semana
+            your weekly summary
           </h3>
           <p className="text-base font-bold text-[#5D4E37]">
-            {activeCount}/7 tickets comprados
+            {activeCount}/7 tickets purchased
           </p>
         </div>
 
         <div className="grid grid-cols-7 gap-2">
           {[
-            "Lunes",
-            "Martes",
-            "Miércoles",
-            "Jueves",
-            "Viernes",
-            "Sábado",
-            "Domingo",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday",
           ].map((day, index) => (
             <div
               key={day}
@@ -230,7 +230,7 @@ export function SavingStreakSection({
                     {reward.unlocked ? "✓" : "❄️"}
                   </span>
                   <span className="font-bold text-[#2C1810]">
-                    {reward.days} días
+                    {reward.days} days
                   </span>
                 </div>
                 <Badge

@@ -15,7 +15,7 @@ import {
 } from "@creit.tech/stellar-wallets-kit";
 
 const stellarWalletsKit: StellarWalletsKit = new StellarWalletsKit({
-  network: "Standalone Network ; February 2017" as WalletNetwork,
+  network: "Test SDF Network ; September 2015" as WalletNetwork,
   modules: allowAllModules(),
 });
 
