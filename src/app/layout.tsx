@@ -4,9 +4,9 @@ import { Bungee, Bungee_Inline } from "next/font/google";
 import { WalletProvider } from "~/providers/WalletProvider";
 
 export const metadata: Metadata = {
-  title: "Lotty - Ahorra y Gana",
-  description: "La primera plataforma de ahorro con lotería en Stellar",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+  title: "Lotty - Stellar",
+  description: "The first platform to save and win on Stellar",
+  icons: [{ rel: "icon", url: "/lottyGuy.png" }],
 };
 
 const bungee = Bungee({
