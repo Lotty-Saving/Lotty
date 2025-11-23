@@ -91,7 +91,7 @@ export function TicketsSection({
 
       // Preparar el withdraw desde el vault usando withdrawShares
       const withdrawResponse = await sdk.withdrawShares(
-        process.env.NEXT_PUBLIC_VAULT_ADDRESS as string,
+        process.env.NEXT_PUBLIC_VAULT_ADDRESS!,
         {
           shares: withdrawShares,
           caller: address,
@@ -266,7 +266,7 @@ export function TicketsSection({
                     </TableCell>
                     <TableCell className="text-right">
                       <div className="flex items-center justify-end gap-2">
-                        {(ticket.envelopeXdr || ticket.withdrawXdr) && (
+                        {(ticket.envelopeXdr ?? ticket.withdrawXdr) && (
                           <TooltipProvider>
                             <Tooltip>
                               <TooltipTrigger asChild>
@@ -275,7 +275,7 @@ export function TicketsSection({
                                   variant="outline"
                                   onClick={() =>
                                     copyEnvelopeXdr(
-                                      ticket.withdrawXdr || ticket.envelopeXdr!,
+                                      ticket.withdrawXdr ?? ticket.envelopeXdr!,
                                       ticket.id,
                                     )
                                   }

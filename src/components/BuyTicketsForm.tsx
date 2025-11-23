@@ -46,11 +46,11 @@ export function BuyTicketsForm({
       const finalPrince = toBaseUnits(price);
 
       const deposit = await sdk.depositToVault(
-        process.env.NEXT_PUBLIC_VAULT_ADDRESS as string,
+        process.env.NEXT_PUBLIC_VAULT_ADDRESS!,
         {
           amounts: [finalPrince],
           invest: true,
-          caller: address as string,
+          caller: address,
           slippageBps: 100,
         },
         currentTestnet,
@@ -78,9 +78,9 @@ export function BuyTicketsForm({
         const ticketId = `#${Math.random().toString(36).substring(2, 6).toUpperCase()}`;
         const date = new Date().toISOString().split("T")[0];
         return {
-          id: ticketId,
+          id: ticketId ?? "",
           amount: `$${price.toFixed(2)}`,
-          date: date,
+          date: date ?? "",
           envelopeXdr: result.envelopeXdr || signedXDR.signedTxXdr,
           redeemed: false,
           withdrawXdr: undefined,
@@ -89,7 +89,7 @@ export function BuyTicketsForm({
 
       // Llamar al callback para agregar los tickets
       if (onTicketsPurchased) {
-        onTicketsPurchased(newTickets as any);
+        onTicketsPurchased(newTickets);
       }
 
       // Reset del formulario
