@@ -20,6 +20,12 @@ export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState<TabId>("pools");
   const [copied, setCopied] = useState(false);
   const [ticketAmount, setTicketAmount] = useState(1);
+  const [mockTickets, setMockTickets] = useState([
+    { id: "#7F3A", amount: "$10.00", date: "2024-01-15" },
+    { id: "#9B2E", amount: "$10.00", date: "2024-01-18" },
+    { id: "#4D1C", amount: "$10.00", date: "2024-01-20" },
+    { id: "#2A8F", amount: "$10.00", date: "2024-01-22" },
+  ]);
 
   // Protección de ruta: redirigir si no hay wallet conectada
   useEffect(() => {
@@ -36,7 +42,7 @@ export default function DashboardPage() {
     tickets: 120247,
     winners: 15,
     round: 847,
-    userTickets: 8,
+    userTickets: 4,
     userBalance: 80,
   };
 
@@ -45,13 +51,6 @@ export default function DashboardPage() {
     weekActivity: [true, true, false, true, true, false, false], // Lun-Dom (4 activos)
     currentAPY: 11,
   };
-
-  const mockTickets = [
-    { id: "#7F3A", amount: "$10.00", date: "2024-01-15" },
-    { id: "#9B2E", amount: "$10.00", date: "2024-01-18" },
-    { id: "#4D1C", amount: "$10.00", date: "2024-01-20" },
-    { id: "#2A8F", amount: "$10.00", date: "2024-01-22" },
-  ];
 
   const copyToClipboard = async (text: string) => {
     try {
@@ -84,6 +83,18 @@ export default function DashboardPage() {
             ticketAmount={ticketAmount}
             setTicketAmount={setTicketAmount}
             mockTickets={mockTickets}
+            onTicketsPurchased={(newTickets) => {
+              setMockTickets((prev) => [...newTickets, ...prev]);
+            }}
+            onTicketRedeemed={(ticketId, withdrawXdr) => {
+              setMockTickets((prev) =>
+                prev.map((ticket) =>
+                  ticket.id === ticketId
+                    ? { ...ticket, redeemed: true, withdrawXdr }
+                    : ticket,
+                ),
+              );
+            }}
           />
         );
 

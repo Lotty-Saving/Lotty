@@ -1,4 +1,4 @@
-export function toBaseUnits(amountHuman: number): string {
-  const factor = 10 ** 7;
-  return BigInt(Math.round(amountHuman * factor)).toString();
+export function toBaseUnits(amountHuman: number): number {
+  const factor = 10 ** 8;
+  return Math.round(amountHuman * factor);
 }

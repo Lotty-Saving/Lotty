@@ -8,12 +8,23 @@ import { toBaseUnits } from "~/utils/xlmCovert";
 import { xdr } from "@stellar/stellar-sdk";
 import { sorobanServer } from "~/hooks/useRiffle";
 import { depositToVault } from "~/soroban/deposit";
+import { useState } from "react";
 
 interface BuyTicketsFormProps {
   ticketAmount: number;
   setTicketAmount: (amount: number) => void;
   isInline?: boolean; // Para controlar si está dentro de un dialog o no
   address: string;
+  onTicketsPurchased?: (
+    tickets: Array<{
+      id: string;
+      amount: string;
+      date: string;
+      envelopeXdr?: string;
+      redeemed?: boolean;
+      withdrawXdr?: string;
+    }>,
+  ) => void;
 }
 
 export function BuyTicketsForm({
@@ -21,20 +32,87 @@ export function BuyTicketsForm({
   setTicketAmount,
   isInline = false,
   address,
+  onTicketsPurchased,
 }: BuyTicketsFormProps) {
   const { signTransaction } = useWallet();
+  const [isLoading, setIsLoading] = useState(false);
 
   const onBuyTickets = async () => {
-    const xlmAmount = toBaseUnits(ticketAmount);
+    if (isLoading) return;
 
-    if (!signTransaction) return;
+    setIsLoading(true);
+    try {
+      const price = ticketAmount * 10;
+      const finalPrince = toBaseUnits(price);
 
-    await depositToVault({
-      userAddress: address,
-      amountInUnits: xlmAmount,
-      signTransaction,
-    });
+      const deposit = await sdk.depositToVault(
+        process.env.NEXT_PUBLIC_VAULT_ADDRESS as string,
+        {
+          amounts: [finalPrince],
+          invest: true,
+          caller: address as string,
+          slippageBps: 100,
+        },
+        currentTestnet,
+      );
+
+      if (!signTransaction) {
+        throw new Error("Wallet signTransaction function is not available.");
+      }
+
+      const signedXDR = await signTransaction(deposit.xdr);
+
+      console.log(signedXDR, " signedXDR");
+
+      // 3. Send the transaction
+      const result = await sdk.sendTransaction(
+        signedXDR.signedTxXdr,
+        currentTestnet,
+        false,
+      );
+
+      console.log(result, " result");
+
+      // Generar tickets comprados
+      const newTickets = Array.from({ length: ticketAmount }, (_, index) => {
+        const ticketId = `#${Math.random().toString(36).substring(2, 6).toUpperCase()}`;
+        const date = new Date().toISOString().split("T")[0];
+        return {
+          id: ticketId,
+          amount: `$${price.toFixed(2)}`,
+          date: date,
+          envelopeXdr: result.envelopeXdr || signedXDR.signedTxXdr,
+          redeemed: false,
+          withdrawXdr: undefined,
+        };
+      });
+
+      // Llamar al callback para agregar los tickets
+      if (onTicketsPurchased) {
+        onTicketsPurchased(newTickets as any);
+      }
+
+      // Reset del formulario
+      setTicketAmount(1);
+    } catch (error) {
+      console.error("Error purchasing tickets:", error);
+      // Aquí podrías agregar un toast o notificación de error
+    } finally {
+      setIsLoading(false);
+    }
   };
+
+  //   const onBuyTickets = async () => {
+  //     const xlmAmount = toBaseUnits(ticketAmount);
+
+  //     if (!signTransaction) return;
+
+  //     await depositToVault({
+  //       userAddress: address,
+  //       amountInUnits: xlmAmount,
+  //       signTransaction,
+  //     });
+  //   };
 
   return (
     <div className={`space-y-6 ${isInline ? "" : "py-4"}`}>
@@ -95,10 +173,17 @@ export function BuyTicketsForm({
 
       <Button
         onClick={onBuyTickets}
-        className="bg-primary text-primary-foreground h-14 w-full border-4 border-[#2C1810] text-lg font-black uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]"
-        disabled={ticketAmount === 0}
+        className="bg-primary text-primary-foreground h-14 w-full border-4 border-[#2C1810] text-lg font-black uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+        disabled={ticketAmount === 0 || isLoading}
       >
-        <span className="text-primary-foreground">{">"} BUY TICKETS</span>
+        {isLoading ? (
+          <span className="text-primary-foreground flex items-center gap-2">
+            <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-solid border-current border-r-transparent"></span>
+            PROCESSING...
+          </span>
+        ) : (
+          <span className="text-primary-foreground">{">"} BUY TICKETS</span>
+        )}
       </Button>
     </div>
   );
