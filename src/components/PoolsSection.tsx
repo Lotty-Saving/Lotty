@@ -229,10 +229,10 @@ export function PoolsSection({ address, poolData }: PoolsSectionProps) {
       <div className="flex-1 overflow-hidden">
         <div className="mb-4 shrink-0">
           <h3 className="text-xl font-bold text-[#2C1810]">
-            <span className="text-primary">{">"}</span> Historial de Ganadores
+            <span className="text-primary">{">"}</span> Winner History
           </h3>
           <p className="mt-1 text-sm font-semibold text-[#5D4E37]">
-            Resultados de pools anteriores
+            Previous pool results
           </p>
         </div>
 

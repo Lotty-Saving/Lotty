@@ -40,8 +40,8 @@ export function ProfileSection({
       {/* Header */}
       <div className="shrink-0">
         <h2 className="text-2xl font-bold text-[#2C1810]">
-          <span className="text-primary">{">"}</span> Statistics and progress of
-          your savings
+          <span className="text-primary">{">"}</span> Statistics and Progress of
+          Your Savings
         </h2>
         <p className="mt-2 text-base font-semibold text-[#5D4E37]">
           Track your balance, tickets, and rewards
@@ -62,7 +62,7 @@ export function ProfileSection({
                   ${poolData.userBalance}
                 </p>
                 <p className="mt-1 text-xs font-semibold text-[#5D4E37]">
-                  USD in pool
+                  USD in Pool
                 </p>
               </div>
               <div className="rounded-full border-3 border-[#2C1810] bg-[#FFD93D] p-2">
@@ -82,7 +82,7 @@ export function ProfileSection({
                   {poolData.userTickets}
                 </p>
                 <p className="mt-1 text-xs font-semibold text-[#2C1810]">
-                  tickets in play
+                  Tickets in Play
                 </p>
               </div>
               <div className="rounded-full border-3 border-[#2C1810] bg-white p-2">
@@ -102,7 +102,7 @@ export function ProfileSection({
                   {userStats.currentAPY}%
                 </p>
                 <p className="mt-1 text-xs font-semibold text-[#5D4E37]">
-                  annual return
+                  Annual Return
                 </p>
               </div>
               <div className="rounded-full border-3 border-[#2C1810] bg-[#FFD93D] p-2">
